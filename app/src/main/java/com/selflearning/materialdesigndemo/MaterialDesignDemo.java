@@ -2,6 +2,7 @@ package com.selflearning.materialdesigndemo;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -29,8 +30,12 @@ public class MaterialDesignDemo extends AppCompatActivity {
 
     private void initializeTabs() {
         TabLayout tabs = (TabLayout) findViewById(R.id.tabs);
-        tabs.addTab(tabs.newTab().setText("Tab 1"));
-        tabs.addTab(tabs.newTab().setText("Tab 2"));
-        tabs.addTab(tabs.newTab().setText("Tab 3"));
+        ViewPager viewPager = (ViewPager) findViewById(R.id.viewpager);
+        PagerAdapter pagerAdapter = new PagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new ListContentFragment(), "List");
+        pagerAdapter.addFragment(new TileContentFragment(), "Tile");
+        pagerAdapter.addFragment(new CardContentFragment(), "Card");
+        viewPager.setAdapter(pagerAdapter);
+        tabs.setupWithViewPager(viewPager);
     }
 }
