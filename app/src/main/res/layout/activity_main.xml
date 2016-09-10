@@ -42,5 +42,13 @@
             android:gravity="center"
             android:onClick="onClickToolbarButton"
             android:text="@string/toolbar_demo"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:onClick="onClickExpandableRVButton"
+            android:text="@string/expandable_list_demo"/>
     </LinearLayout>
 </ScrollView>

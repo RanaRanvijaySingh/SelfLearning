@@ -18,6 +18,7 @@
         <activity android:name=".materialdesigndemo.MaterialDesignDemoActivity"/>
         <activity android:name=".loaderdemo.LoaderDemoActivity"/>
         <activity android:name=".toolbardemo.ToolbarDemoActivity"/>
+        <activity android:name=".expandablerecyclerviewdemo.ExpandableRvDemoActivity"/>
     </application>
 
 </manifest>

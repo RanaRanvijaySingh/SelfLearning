@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
@@ -27,5 +28,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickToolbarButton(View view) {
         startActivity(new Intent(this, ToolbarDemoActivity.class));
+    }
+
+    public void onClickExpandableRVButton(View view) {
+        startActivity(new Intent(this, ExpandableRvDemoActivity.class));
     }
 }
