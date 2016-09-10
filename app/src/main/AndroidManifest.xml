@@ -15,7 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".materialdesigndemo.MaterialDesignDemo"/>
+        <activity android:name=".materialdesigndemo.MaterialDesignDemoActivity"/>
+        <activity android:name=".loaderdemo.LoaderDemoActivity"/>
+        <activity android:name=".toolbardemo.ToolbarDemoActivity"/>
     </application>
 
 </manifest>

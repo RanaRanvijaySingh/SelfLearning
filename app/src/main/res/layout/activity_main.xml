@@ -24,5 +24,23 @@
             android:gravity="center"
             android:onClick="onClickMaterialDesignDemoButton"
             android:text="@string/material_design_demo"/>
+
+        <Button
+            android:id="@+id/btnLoader"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:onClick="onClickLoaderButton"
+            android:text="@string/loader_demo"/>
+
+        <Button
+            android:id="@+id/btnToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:onClick="onClickToolbarButton"
+            android:text="@string/toolbar_demo"/>
     </LinearLayout>
 </ScrollView>

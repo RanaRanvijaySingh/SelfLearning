@@ -9,7 +9,7 @@ import android.view.View;
 
 import com.selflearning.R;
 
-public class MaterialDesignDemo extends AppCompatActivity {
+public class MaterialDesignDemoActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

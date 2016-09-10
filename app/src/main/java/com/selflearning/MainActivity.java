@@ -1,14 +1,13 @@
 package com.selflearning;
 
 import android.content.Intent;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
-import com.selflearning.materialdesigndemo.MaterialDesignDemo;
+import com.selflearning.loaderdemo.LoaderDemoActivity;
+import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
+import com.selflearning.toolbardemo.ToolbarDemoActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,12 +17,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    /**
-     * Function is called on click of material design.
-     *
-     * @param view View
-     */
     public void onClickMaterialDesignDemoButton(View view) {
-        startActivity(new Intent(this, MaterialDesignDemo.class));
+        startActivity(new Intent(this, MaterialDesignDemoActivity.class));
+    }
+
+    public void onClickLoaderButton(View view) {
+        startActivity(new Intent(this, LoaderDemoActivity.class));
+    }
+
+    public void onClickToolbarButton(View view) {
+        startActivity(new Intent(this, ToolbarDemoActivity.class));
     }
 }
