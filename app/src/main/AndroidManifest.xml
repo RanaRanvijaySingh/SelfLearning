@@ -19,6 +19,13 @@
         <activity android:name=".loaderdemo.LoaderDemoActivity"/>
         <activity android:name=".toolbardemo.ToolbarDemoActivity"/>
         <activity android:name=".expandablerecyclerviewdemo.ExpandableRvDemoActivity"/>
+        <activity android:name=".customnotification.CustomNotificationDemo"/>
+
+        <receiver android:name=".customnotification.ButtonClickReceiver">
+            <intent-filter>
+                <action android:name="button_click"/>
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

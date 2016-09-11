@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import com.selflearning.customnotification.CustomNotificationDemo;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
@@ -32,5 +33,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickExpandableRVButton(View view) {
         startActivity(new Intent(this, ExpandableRvDemoActivity.class));
+    }
+
+    public void onClickCustomNotificationButton(View view) {
+        startActivity(new Intent(this, CustomNotificationDemo.class));
     }
 }
