@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.selflearning.customnotification.CustomNotificationDemo;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
+import com.selflearning.imagerotation.RotateImageDemo;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
@@ -37,5 +38,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickCustomNotificationButton(View view) {
         startActivity(new Intent(this, CustomNotificationDemo.class));
+    }
+
+    public void onClickRotateImageButton(View view) {
+        startActivity(new Intent(this, RotateImageDemo.class));
     }
 }

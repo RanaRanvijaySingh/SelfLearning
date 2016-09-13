@@ -58,5 +58,13 @@
             android:gravity="center"
             android:onClick="onClickCustomNotificationButton"
             android:text="Custom Notification"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:gravity="center"
+            android:onClick="onClickRotateImageButton"
+            android:text="Rotate Image"/>
     </LinearLayout>
 </ScrollView>

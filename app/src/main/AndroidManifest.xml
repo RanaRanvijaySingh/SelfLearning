@@ -20,6 +20,7 @@
         <activity android:name=".toolbardemo.ToolbarDemoActivity"/>
         <activity android:name=".expandablerecyclerviewdemo.ExpandableRvDemoActivity"/>
         <activity android:name=".customnotification.CustomNotificationDemo"/>
+        <activity android:name=".imagerotation.RotateImageDemo"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>
