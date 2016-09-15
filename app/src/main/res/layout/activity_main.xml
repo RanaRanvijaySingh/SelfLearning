@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
@@ -11,60 +11,8 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.selflearning.MainActivity">
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvDemos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/btnMaterialDesignDemo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:onClick="onClickMaterialDesignDemoButton"
-            android:text="@string/material_design_demo"/>
-
-        <Button
-            android:id="@+id/btnLoader"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:onClick="onClickLoaderButton"
-            android:text="@string/loader_demo"/>
-
-        <Button
-            android:id="@+id/btnToolbar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:onClick="onClickToolbarButton"
-            android:text="@string/toolbar_demo"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:onClick="onClickExpandableRVButton"
-            android:text="@string/expandable_list_demo"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:onClick="onClickCustomNotificationButton"
-            android:text="Custom Notification"/>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/activity_horizontal_margin"
-            android:gravity="center"
-            android:onClick="onClickRotateImageButton"
-            android:text="Rotate Image"/>
-    </LinearLayout>
-</ScrollView>
+        android:layout_height="match_parent"/>
+</LinearLayout>

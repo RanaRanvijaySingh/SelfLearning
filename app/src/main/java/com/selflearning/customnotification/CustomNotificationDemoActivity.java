@@ -13,7 +13,7 @@ import android.widget.RemoteViews;
 import com.selflearning.MainActivity;
 import com.selflearning.R;
 
-public class CustomNotificationDemo extends AppCompatActivity {
+public class CustomNotificationDemoActivity extends AppCompatActivity {
 
     private static final String INTENT_TO_LISTEN = "button_click";
     private static final String NOTIFICATION_ID = "id";

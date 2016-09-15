@@ -2,6 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.selflearning">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,8 +22,9 @@
         <activity android:name=".loaderdemo.LoaderDemoActivity"/>
         <activity android:name=".toolbardemo.ToolbarDemoActivity"/>
         <activity android:name=".expandablerecyclerviewdemo.ExpandableRvDemoActivity"/>
-        <activity android:name=".customnotification.CustomNotificationDemo"/>
-        <activity android:name=".imagerotation.RotateImageDemo"/>
+        <activity android:name=".customnotification.CustomNotificationDemoActivity"/>
+        <activity android:name=".imagerotation.RotateImageDemoActivity"/>
+        <activity android:name=".filedemo.FileDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

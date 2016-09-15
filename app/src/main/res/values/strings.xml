@@ -1,9 +1,12 @@
 <resources>
     <string name="app_name">SelfLearning</string>
-    <string name="material_design_demo">Material design demo</string>
-    <string name="loader_demo">Loader Demo</string>
-    <string name="toolbar_demo">Toolbar demo</string>
-    <string name="expandable_list_demo">Expandable list demo</string>
+    <string name="demo_material_design">Material design demo</string>
+    <string name="demo_loader">Loader Demo</string>
+    <string name="demo_toolbar">Toolbar demo</string>
+    <string name="demo_expandable_list">Expandable list demo</string>
+    <string name="demo_custom_notification">Custom Notification demo</string>
+    <string name="demo_rotate_image">Rotate Image demo</string>
+    <string name="demo_file">File demo</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>

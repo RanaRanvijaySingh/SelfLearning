@@ -3,44 +3,72 @@ package com.selflearning;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.selflearning.customnotification.CustomNotificationDemo;
+import com.selflearning.customnotification.CustomNotificationDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
-import com.selflearning.imagerotation.RotateImageDemo;
+import com.selflearning.filedemo.FileDemoActivity;
+import com.selflearning.imagerotation.RotateImageDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
+
+    List<Class> activityList = new ArrayList<>();
+
+    {
+        activityList.add(MaterialDesignDemoActivity.class);
+        activityList.add(LoaderDemoActivity.class);
+        activityList.add(ToolbarDemoActivity.class);
+        activityList.add(ExpandableRvDemoActivity.class);
+        activityList.add(CustomNotificationDemoActivity.class);
+        activityList.add(RotateImageDemoActivity.class);
+        activityList.add(FileDemoActivity.class);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        initializeDemoList();
     }
 
-    public void onClickMaterialDesignDemoButton(View view) {
-        startActivity(new Intent(this, MaterialDesignDemoActivity.class));
+    private void initializeDemoList() {
+        RecyclerView rvDemos = (RecyclerView) findViewById(R.id.rvDemos);
+        rvDemos.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        rvDemos.setLayoutManager(layoutManager);
+        DemoAdapter demoAdapter = new DemoAdapter(getDemoList(), demoClickListener);
+        rvDemos.setAdapter(demoAdapter);
     }
 
-    public void onClickLoaderButton(View view) {
-        startActivity(new Intent(this, LoaderDemoActivity.class));
+    private List<String> getDemoList() {
+        List<String> demoList = new ArrayList<>();
+        demoList.add(getResources().getString(R.string.demo_material_design));
+        demoList.add(getResources().getString(R.string.demo_loader));
+        demoList.add(getResources().getString(R.string.demo_toolbar));
+        demoList.add(getResources().getString(R.string.demo_expandable_list));
+        demoList.add(getResources().getString(R.string.demo_custom_notification));
+        demoList.add(getResources().getString(R.string.demo_rotate_image));
+        demoList.add(getResources().getString(R.string.demo_file));
+        return demoList;
     }
 
-    public void onClickToolbarButton(View view) {
-        startActivity(new Intent(this, ToolbarDemoActivity.class));
-    }
+    private DemoClickListener demoClickListener = new DemoClickListener() {
+        @Override
+        public void selectedPosition(int adapterPosition) {
+            startActivity(activityList.get(adapterPosition));
+        }
+    };
 
-    public void onClickExpandableRVButton(View view) {
-        startActivity(new Intent(this, ExpandableRvDemoActivity.class));
-    }
-
-    public void onClickCustomNotificationButton(View view) {
-        startActivity(new Intent(this, CustomNotificationDemo.class));
-    }
-
-    public void onClickRotateImageButton(View view) {
-        startActivity(new Intent(this, RotateImageDemo.class));
+    public void startActivity(Class aClass) {
+        startActivity(new Intent(this, aClass));
     }
 }
