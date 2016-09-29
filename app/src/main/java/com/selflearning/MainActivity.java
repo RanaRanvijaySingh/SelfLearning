@@ -5,7 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 
 import com.selflearning.customnotification.CustomNotificationDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
@@ -13,6 +12,8 @@ import com.selflearning.filedemo.FileDemoActivity;
 import com.selflearning.imagerotation.RotateImageDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
+import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
+import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 
 import java.util.ArrayList;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(CustomNotificationDemoActivity.class);
         activityList.add(RotateImageDemoActivity.class);
         activityList.add(FileDemoActivity.class);
+        activityList.add(TddDemoActivity.class);
+        activityList.add(SharedPrefDemoActivity.class);
     }
 
     @Override
@@ -58,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_custom_notification));
         demoList.add(getResources().getString(R.string.demo_rotate_image));
         demoList.add(getResources().getString(R.string.demo_file));
+        demoList.add(getResources().getString(R.string.demo_tdd_mvp_mvvp));
+        demoList.add(getResources().getString(R.string.demo_shared_pref_screen));
         return demoList;
     }
 

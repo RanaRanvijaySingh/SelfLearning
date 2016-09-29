@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.selflearning">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
@@ -25,6 +26,8 @@
         <activity android:name=".customnotification.CustomNotificationDemoActivity"/>
         <activity android:name=".imagerotation.RotateImageDemoActivity"/>
         <activity android:name=".filedemo.FileDemoActivity"/>
+        <activity android:name=".tddwithmvpmvvmdemo.TddDemoActivity"/>
+        <activity android:name=".sharedprefdemo.SharedPrefDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

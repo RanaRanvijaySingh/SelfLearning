@@ -1,19 +1,20 @@
-package com.selflearning.toolbardemo;
+package com.selflearning.tddwithmvpmvvmdemo;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.selflearning.R;
+import com.selflearning.toolbardemo.SimpleViewHolder;
 
 import java.util.List;
 
-public class SimpleListAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
+public class CommentListAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
 
-    private List<String> mList;
+    private List<Comment> mList;
 
-    public SimpleListAdapter(List<String> dummyStringList) {
-        this.mList = dummyStringList;
+    public CommentListAdapter(List<Comment> commentList) {
+        this.mList = commentList;
     }
 
     @Override
@@ -23,7 +24,7 @@ public class SimpleListAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
 
     @Override
     public void onBindViewHolder(SimpleViewHolder holder, int position) {
-        holder.getTvString().setText(mList.get(position));
+        holder.getTvString().setText(mList.get(position).getName());
     }
 
     @Override
@@ -32,4 +33,7 @@ public class SimpleListAdapter extends RecyclerView.Adapter<SimpleViewHolder> {
     }
 
 
+    public void setList(List<Comment> commentList) {
+        this.mList = commentList;
+    }
 }

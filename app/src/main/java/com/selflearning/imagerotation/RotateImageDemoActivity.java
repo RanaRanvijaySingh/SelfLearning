@@ -1,144 +1,64 @@
 package com.selflearning.imagerotation;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatSeekBar;
-import android.util.Log;
-import android.view.MotionEvent;
-import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
-import android.widget.SeekBar;
+import android.widget.RelativeLayout;
 
 import com.selflearning.R;
 
 public class RotateImageDemoActivity extends AppCompatActivity {
+    private static final String TAG = "RotateImageDemoActivity";
     private ImageView imageView;
-    private AppCompatSeekBar seekbar;
-
-    private double x;
-    private double y;
+    private CircularSeekBar circularSeekBar;
+    private RelativeLayout rlRotation;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rotate_image_demo);
         imageView = (ImageView) findViewById(R.id.imageView);
-        seekbar = (AppCompatSeekBar) findViewById(R.id.seekbar);
-        seekbar.setOnSeekBarChangeListener(barChangeListener);
-        imageView.setOnTouchListener(onTouchListener);
+        rlRotation = (RelativeLayout) findViewById(R.id.rlRotation);
+        circularSeekBar = (CircularSeekBar) findViewById(R.id.circularSeekBar);
+        circularSeekBar.setOnSeekBarChangeListener(circularSeekBarChangeListener);
+        rlRotation.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
     }
 
-    private double dx;
-    private double dy;
-    private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+    private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            int eid = event.getAction();
-            switch (eid) {
-                case MotionEvent.ACTION_MOVE:
-                    rotateImage(getAngle(event.getX()-dx, event.getY()-dy));
-                    break;
-                case MotionEvent.ACTION_DOWN:
-                    x = event.getX();
-                    y = event.getY();
-                    dx = x-imageView.getX();
-                    dy = y-imageView.getY();
-                    break;
-                case MotionEvent.ACTION_UP:
-                    break;
-                default:
-                    break;
-            }
-            return true;
+        public void onGlobalLayout() {
+            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
+                    imageView.getLayoutParams();
+            layoutParams.height = rlRotation.getHeight() / 2 - 30;
+            imageView.setLayoutParams(layoutParams);
+            imageView.setX(rlRotation.getWidth() / 2);
         }
     };
 
-    public int getAngle(double x, double y) {
-        double imageX = imageView.getX() + imageView.getWidth() / 2;
-        double imageY = imageView.getY() + imageView.getHeight() / 2;
-        double perpendicular = y - imageY;
-        double base = x - imageX;
-        double theta = Math.atan2(perpendicular, base);
-        double degree = Math.toDegrees(theta);
-        //Check in which quad point is lying
-        if (perpendicular < 0 && base >= 0) {
-            //Lies in Fourth quad
-            degree += 270;
-        } else if (perpendicular >= 0 && base < 0) {
-            //Lies in Second quad
-            degree += 90;
-        } else if (perpendicular < 0 && base < 0) {
-            //Lies in Third quad
-            degree += 180;
-        } else {
-            //Lies in first quad
-        }
-        Log.i("", "Angle : " + (int) degree);
-        return (int) degree;
-    }
+    private CircularSeekBar.OnCircularSeekBarChangeListener circularSeekBarChangeListener =
+            new CircularSeekBar.OnCircularSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(CircularSeekBar circularSeekBar,
+                                              int progress, boolean fromUser) {
+                    rotateImage(progress);
+                }
 
-    private SeekBar.OnSeekBarChangeListener barChangeListener = new SeekBar.OnSeekBarChangeListener() {
-        @Override
-        public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-            rotateImage(progress);
-        }
+                @Override
+                public void onStopTrackingTouch(CircularSeekBar seekBar) {
 
-        @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {
+                }
 
-        }
+                @Override
+                public void onStartTrackingTouch(CircularSeekBar seekBar) {
 
-        @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {
-
-        }
-    };
+                }
+            };
 
     private void rotateImage(int progress) {
-//        imageView.setPivotX(imageView.getHeight());
-//        imageView.setPivotY(imageView.getWidth());
+        imageView.setPivotX(imageView.getWidth() / 2);
+        imageView.setPivotY(imageView.getHeight());
         imageView.setRotation(progress);
     }
-
-
-/*
-    private View.OnTouchListener onTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            double r = Math.atan2(event.getX() - imageView.getWidth(), imageView.getHeight() - event.getY());
-            int rotation = (int) Math.toDegrees(r);
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    x = event.getX();
-                    y = event.getY();
-                    updateRotation(rotation);
-                    break;
-                case MotionEvent.ACTION_UP:
-                    break;
-            }//switch
-            return true;
-        }//onTouch
-    };
-
-    private void updateRotation(double rot) {
-        float newRot = new Float(rot);
-        Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.mipmap.ic_launcher);
-        Matrix matrix = new Matrix();
-        matrix.postRotate(newRot, bitmap.getWidth(), bitmap.getHeight());
-        if (y > 250) {
-            Bitmap reDrawnBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-            imageView.setImageBitmap(reDrawnBitmap);
-        } else {
-            Bitmap reDrawnBitmap = Bitmap.createBitmap(bitmap, 0, 0, bitmap.getWidth(), bitmap.getHeight(), matrix, true);
-            imageView.setImageBitmap(reDrawnBitmap);
-        }
-    }
-*/
-
 }
