@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.selflearning.customnotification.CustomNotificationDemoActivity;
+import com.selflearning.databaseupgradedemo.DatabaseUpgradeDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.filedemo.FileDemoActivity;
 import com.selflearning.imagerotation.RotateImageDemoActivity;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(FileDemoActivity.class);
         activityList.add(TddDemoActivity.class);
         activityList.add(SharedPrefDemoActivity.class);
+        activityList.add(DatabaseUpgradeDemoActivity.class);
     }
 
     @Override
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_file));
         demoList.add(getResources().getString(R.string.demo_tdd_mvp_mvvp));
         demoList.add(getResources().getString(R.string.demo_shared_pref_screen));
+        demoList.add(getResources().getString(R.string.demo_database_upgrade));
         return demoList;
     }
 

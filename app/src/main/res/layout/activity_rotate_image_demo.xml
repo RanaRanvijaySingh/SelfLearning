@@ -1,26 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rlRotation"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#77FF77"
-    android:orientation="vertical">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rlRotation"
         android:layout_width="wrap_content"
-        android:layout_height="120dp"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_arrow_forward_black_24dp"/>
+        android:layout_height="wrap_content"
+        android:background="#ff7777"
+        android:orientation="vertical">
 
-    <com.selflearning.imagerotation.CircularSeekBar
-        android:id="@+id/circularSeekBar"
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="120dp"
+            android:src="@drawable/ic_transect_rotate"/>
+
+        <com.selflearning.imagerotation.CircularSeekBar
+            android:id="@+id/circularSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:circle_color="#00FFFFFF"
+            app:circle_progress_color="#00FFFFFF"
+            app:max="360"
+            app:pointer_color="#00FFFFFF"
+            app:pointer_halo_color="#00FFFFFF"
+            app:pointer_halo_color_ontouch="#00FFFFFF"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tvAngle"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:max="360"
-        app:pointer_color="#FFFFFF"
-        app:pointer_halo_color="#FFFFFF"/>
-
-</RelativeLayout>
+        android:layout_height="wrap_content"
+        android:padding="30dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="24sp"/>
+</LinearLayout>

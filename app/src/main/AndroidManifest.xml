@@ -28,6 +28,7 @@
         <activity android:name=".filedemo.FileDemoActivity"/>
         <activity android:name=".tddwithmvpmvvmdemo.TddDemoActivity"/>
         <activity android:name=".sharedprefdemo.SharedPrefDemoActivity"/>
+        <activity android:name=".databaseupgradedemo.DatabaseUpgradeDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

@@ -6,12 +6,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.selflearning.R;
 
 public class RotateImageDemoActivity extends AppCompatActivity {
     private static final String TAG = "RotateImageDemoActivity";
     private ImageView imageView;
+    private TextView tvAngle;
     private CircularSeekBar circularSeekBar;
     private RelativeLayout rlRotation;
 
@@ -20,6 +22,7 @@ public class RotateImageDemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rotate_image_demo);
         imageView = (ImageView) findViewById(R.id.imageView);
+        tvAngle = (TextView) findViewById(R.id.tvAngle);
         rlRotation = (RelativeLayout) findViewById(R.id.rlRotation);
         circularSeekBar = (CircularSeekBar) findViewById(R.id.circularSeekBar);
         circularSeekBar.setOnSeekBarChangeListener(circularSeekBarChangeListener);
@@ -43,6 +46,7 @@ public class RotateImageDemoActivity extends AppCompatActivity {
                 public void onProgressChanged(CircularSeekBar circularSeekBar,
                                               int progress, boolean fromUser) {
                     rotateImage(progress);
+                    tvAngle.setText("Angle : " + String.valueOf(progress));
                 }
 
                 @Override
@@ -58,7 +62,7 @@ public class RotateImageDemoActivity extends AppCompatActivity {
 
     private void rotateImage(int progress) {
         imageView.setPivotX(imageView.getWidth() / 2);
-        imageView.setPivotY(imageView.getHeight());
+        imageView.setPivotY(imageView.getHeight() - (imageView.getWidth() / 2));
         imageView.setRotation(progress);
     }
 }
