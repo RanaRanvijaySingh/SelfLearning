@@ -13,6 +13,7 @@ import com.selflearning.filedemo.FileDemoActivity;
 import com.selflearning.imagerotation.RotateImageDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
+import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
 import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(TddDemoActivity.class);
         activityList.add(SharedPrefDemoActivity.class);
         activityList.add(DatabaseUpgradeDemoActivity.class);
+        activityList.add(RotateViewDemoActivity.class);
     }
 
     @Override
@@ -66,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_tdd_mvp_mvvp));
         demoList.add(getResources().getString(R.string.demo_shared_pref_screen));
         demoList.add(getResources().getString(R.string.demo_database_upgrade));
+        demoList.add(getResources().getString(R.string.demo_custom_rotate_view));
         return demoList;
     }
 

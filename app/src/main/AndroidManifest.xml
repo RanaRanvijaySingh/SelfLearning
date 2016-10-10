@@ -29,6 +29,7 @@
         <activity android:name=".tddwithmvpmvvmdemo.TddDemoActivity"/>
         <activity android:name=".sharedprefdemo.SharedPrefDemoActivity"/>
         <activity android:name=".databaseupgradedemo.DatabaseUpgradeDemoActivity"/>
+        <activity android:name=".rotateviewdemo.RotateViewDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

@@ -30,7 +30,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        Toast.makeText(mContext, "Drop table", Toast.LENGTH_SHORT).show();
+        Toast.makeText(mContext
+                , "Drop table", Toast.LENGTH_SHORT).show();
         if (oldVersion < newVersion) {
             db.execSQL("alter table users add column phone text default 0");
         }

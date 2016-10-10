@@ -23,7 +23,7 @@
             android:id="@+id/circularSeekBar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:circle_color="#00FFFFFF"
+            app:circle_color="#FFFFFF"
             app:circle_progress_color="#00FFFFFF"
             app:max="360"
             app:pointer_color="#00FFFFFF"

@@ -10,6 +10,7 @@
     <string name="demo_tdd_mvp_mvvp">TDD with MVVM and MVP</string>
     <string name="demo_shared_pref_screen">Shared preference screen</string>
     <string name="demo_database_upgrade">Database upgrade demo</string>
+    <string name="demo_custom_rotate_view">Rotate view demo</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>
