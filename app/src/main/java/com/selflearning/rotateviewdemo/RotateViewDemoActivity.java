@@ -53,10 +53,9 @@ public class RotateViewDemoActivity extends AppCompatActivity {
                     break;
                 case MotionEvent.ACTION_UP:
                     Log.i(TAG, "ACTION_UP " + event.getX() + " " + event.getY());
-                    rotateView();
                     break;
                 case MotionEvent.ACTION_MOVE:
-//                    rotateView();
+                    rotateView();
                     break;
             }
             return true;
@@ -64,31 +63,16 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     };
 
     private void rotateView() {
-        //                    Log.i(TAG, "ACTION_MOVE " + event.getX() + " " + event.getY());
         int position[] = new int[2];
         viewTouchHolder.getLocationOnScreen(position);
         Log.i(TAG, "ACTION_MOVE " + position[0] + " " + position[1]);
         position[0] = position[0] + rlGroupRotation.getWidth() / 2;
         position[1] = position[1] + viewTouchHolder.getHeight() / 2;
-                    /*imageView.setX(imageView.getX() + event.getX());
-                    imageView.setY(imageView.getY() + event.getY());*/
-//                    int pivotPoints[] = new int[]{pivotX, pivotY};
         int pivotPoints[] = new int[]{pivotPositionX, pivotPositionY};
         double angle = getAngle(position, pivotPoints);
-        Log.i(TAG, "ACTION_MOVE " + angle);
-        rotateImage(angle);
+//        Log.i(TAG, "ACTION_MOVE " + angle);
+        rotateImage(c++);
     }
-
-    /*private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
-        @Override
-        public void onGlobalLayout() {
-            RelativeLayout.LayoutParams layoutParams = (RelativeLayout.LayoutParams)
-                    imageView.getLayoutParams();
-            layoutParams.height = rlRotation.getHeight() / 2;
-            imageView.setLayoutParams(layoutParams);
-            imageView.setX(rlRotation.getWidth() / 2);
-        }
-    };*/
 
     private void rotateImage(double progress) {
         rlGroupRotation.setPivotX(pivotX);
@@ -97,7 +81,6 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     }
 
     public double getAngle(int[] position, int[] pivot) {
-//        Log.i(TAG, "" + position[1] + " " + pivot[1] + " " + position[0] + " " + pivot[0]);
         double angle = Math.toDegrees(Math.atan2(position[1] - pivot[1], position[0] - pivot[0]));
         if (angle == -90) {
             angle = 0;
@@ -129,27 +112,9 @@ public class RotateViewDemoActivity extends AppCompatActivity {
             return QUADRANT_SECOND;
         } else if (xDifference < 0 && yDifference >= 0) {
             return QUADRANT_THIRD;
-        } else {
+        } else if (xDifference >= 0 && yDifference >= 0) {
             return QUADRANT_FORTH;
         }
+        return QUADRANT_FIRST;
     }
-
-/*
-    private View.OnTouchListener backgroundTouchListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View v, MotionEvent event) {
-            switch (event.getAction()) {
-                case MotionEvent.ACTION_DOWN:
-                    Log.i(TAG, "ACTION_DOWN " + event.getX() + " " + event.getY());
-                    break;
-                case MotionEvent.ACTION_UP:
-                    Log.i(TAG, "ACTION_UP " + event.getX() + " " + event.getY());
-                    break;
-                case MotionEvent.ACTION_MOVE:
-                    Log.i(TAG, "ACTION_MOVE " + event.getX() + " " + event.getY());
-                    break;
-            }
-            return true;
-        }
-    };*/
 }
