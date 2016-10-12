@@ -65,13 +65,13 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     private void rotateView() {
         int position[] = new int[2];
         viewTouchHolder.getLocationOnScreen(position);
-        Log.i(TAG, "ACTION_MOVE " + position[0] + " " + position[1]);
+        Log.i(TAG, "ACTION_MOVE position" + position[0] + " " + position[1]);
         position[0] = position[0] + rlGroupRotation.getWidth() / 2;
         position[1] = position[1] + viewTouchHolder.getHeight() / 2;
         int pivotPoints[] = new int[]{pivotPositionX, pivotPositionY};
         double angle = getAngle(position, pivotPoints);
-//        Log.i(TAG, "ACTION_MOVE " + angle);
-        rotateImage(c++);
+        Log.i(TAG, "ACTION_MOVE " + angle);
+        rotateImage(angle);
     }
 
     private void rotateImage(double progress) {
@@ -88,18 +88,19 @@ public class RotateViewDemoActivity extends AppCompatActivity {
         int quadrant = getQuadrantForPoint(position, pivot);
         switch (quadrant) {
             case QUADRANT_FIRST:
-                angle = 90 - angle;
+                angle = 90 + angle;
                 break;
             case QUADRANT_SECOND:
-                angle = 270 + angle;
+                angle = 270 + 180 + angle;
                 break;
             case QUADRANT_THIRD:
-                angle = 270 - angle;
+                angle = 90 + angle;
                 break;
             default:
                 angle = 90 + angle;
                 break;
         }
+        Log.i(TAG, "quad " + angle + " " + quadrant);
         return angle;
     }
 
