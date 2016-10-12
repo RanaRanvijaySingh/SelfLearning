@@ -13,6 +13,10 @@ import com.selflearning.R;
 
 public class RotateViewDemoActivity extends AppCompatActivity {
     private static final String TAG = "RotateViewDemoActivity";
+    private static final int QUADRANT_FIRST = 1;
+    private static final int QUADRANT_SECOND = QUADRANT_FIRST + 1;
+    private static final int QUADRANT_THIRD = QUADRANT_SECOND + 1;
+    private static final int QUADRANT_FORTH = QUADRANT_THIRD + 1;
     private ImageView imageView;
     //    private RelativeLayout rlRotation;
     private View viewTouchHolder;
@@ -34,35 +38,46 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     }
 
     private int c = 0;
+    private int pivotPositionX;
+    private int pivotPositionY;
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+                    pivotPositionX = (int) (rlGroupRotation.getX() + rlGroupRotation.getWidth() / 2);
+                    pivotPositionY = (int) (rlGroupRotation.getY() + rlGroupRotation.getHeight());
                     pivotX = rlGroupRotation.getWidth() / 2;
                     pivotY = rlGroupRotation.getHeight();
                     Log.i(TAG, "ACTION_DOWN " + event.getX() + " " + event.getY());
                     break;
                 case MotionEvent.ACTION_UP:
                     Log.i(TAG, "ACTION_UP " + event.getX() + " " + event.getY());
+                    rotateView();
                     break;
                 case MotionEvent.ACTION_MOVE:
-//                    Log.i(TAG, "ACTION_MOVE " + event.getX() + " " + event.getY());
-                    int position[] = new int[2];
-                    viewTouchHolder.getLocationOnScreen(position);
-//                    Log.i(TAG, "ACTION_MOVE " + position[0] + " " + position[1]);
-                    /*imageView.setX(imageView.getX() + event.getX());
-                    imageView.setY(imageView.getY() + event.getY());*/
-//                    int pivotPoints[] = new int[]{pivotX, pivotY};
-                    int pivotPoints[] = new int[]{pivotX, pivotY};
-                    double angle = getAngle(position, pivotPoints);
-//                    Log.i(TAG, "ACTION_MOVE " + angle);
-                    rotateImage(c++);
+//                    rotateView();
                     break;
             }
             return true;
         }
     };
+
+    private void rotateView() {
+        //                    Log.i(TAG, "ACTION_MOVE " + event.getX() + " " + event.getY());
+        int position[] = new int[2];
+        viewTouchHolder.getLocationOnScreen(position);
+        Log.i(TAG, "ACTION_MOVE " + position[0] + " " + position[1]);
+        position[0] = position[0] + rlGroupRotation.getWidth() / 2;
+        position[1] = position[1] + viewTouchHolder.getHeight() / 2;
+                    /*imageView.setX(imageView.getX() + event.getX());
+                    imageView.setY(imageView.getY() + event.getY());*/
+//                    int pivotPoints[] = new int[]{pivotX, pivotY};
+        int pivotPoints[] = new int[]{pivotPositionX, pivotPositionY};
+        double angle = getAngle(position, pivotPoints);
+        Log.i(TAG, "ACTION_MOVE " + angle);
+        rotateImage(angle);
+    }
 
     /*private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener = new ViewTreeObserver.OnGlobalLayoutListener() {
         @Override
@@ -82,8 +97,41 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     }
 
     public double getAngle(int[] position, int[] pivot) {
-        Log.i(TAG, "" + position[1] + " " + pivot[1] + " " + position[0] + " " + pivot[0]);
-        return Math.toDegrees(Math.atan2(position[1] - pivot[1], position[0] - pivot[0]));
+//        Log.i(TAG, "" + position[1] + " " + pivot[1] + " " + position[0] + " " + pivot[0]);
+        double angle = Math.toDegrees(Math.atan2(position[1] - pivot[1], position[0] - pivot[0]));
+        if (angle == -90) {
+            angle = 0;
+        }
+        int quadrant = getQuadrantForPoint(position, pivot);
+        switch (quadrant) {
+            case QUADRANT_FIRST:
+                angle = 90 - angle;
+                break;
+            case QUADRANT_SECOND:
+                angle = 270 + angle;
+                break;
+            case QUADRANT_THIRD:
+                angle = 270 - angle;
+                break;
+            default:
+                angle = 90 + angle;
+                break;
+        }
+        return angle;
+    }
+
+    public int getQuadrantForPoint(int[] position, int[] pivot) {
+        int xDifference = position[0] - pivot[0];
+        int yDifference = position[1] - pivot[1];
+        if (xDifference >= 0 && yDifference <= 0) {
+            return QUADRANT_FIRST;
+        } else if (xDifference < 0 && yDifference < 0) {
+            return QUADRANT_SECOND;
+        } else if (xDifference < 0 && yDifference >= 0) {
+            return QUADRANT_THIRD;
+        } else {
+            return QUADRANT_FORTH;
+        }
     }
 
 /*
