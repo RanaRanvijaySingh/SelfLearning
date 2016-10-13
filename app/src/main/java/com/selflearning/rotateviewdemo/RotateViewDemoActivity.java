@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -19,8 +20,10 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     private static final int QUADRANT_FORTH = QUADRANT_THIRD + 1;
     private ImageView imageView;
     private RelativeLayout rlRotation;
-    private View viewTouchHolder;
     private RelativeLayout rlGroupRotation;
+    private int c = 0;
+    private int pivotPositionX;
+    private int pivotPositionY;
     private int pivotX = 0;
     private int pivotY = 0;
 
@@ -31,24 +34,35 @@ public class RotateViewDemoActivity extends AppCompatActivity {
         imageView = (ImageView) findViewById(R.id.imageView);
         rlRotation = (RelativeLayout) findViewById(R.id.rlRotation);
         rlGroupRotation = (RelativeLayout) findViewById(R.id.rlGroupRotation);
-        viewTouchHolder = findViewById(R.id.viewTouchHolder);
-//        rlRotation.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
-//        rlRotation.setOnTouchListener(backgroundTouchListener);
+        imageView.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
         rlRotation.setOnTouchListener(viewTouchListener);
     }
 
-    private int c = 0;
-    private int pivotPositionX;
-    private int pivotPositionY;
+    private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener =
+            new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+                    /** Set wrapper layout size.*/
+                    RelativeLayout.LayoutParams layoutParams =
+                            (RelativeLayout.LayoutParams) rlGroupRotation.getLayoutParams();
+                    int viewHeight = imageView.getHeight();
+                    layoutParams.height = viewHeight * 2;
+                    layoutParams.width = viewHeight * 2;
+                    rlGroupRotation.setLayoutParams(layoutParams);
+                    /** Set image position in wrapper layout.*/
+                    imageView.setY(0);
+                }
+            };
+
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
                     pivotPositionX = (int) (rlGroupRotation.getX() + rlGroupRotation.getWidth() / 2);
-                    pivotPositionY = (int) (rlGroupRotation.getY() + rlGroupRotation.getHeight());
-                    pivotX = rlGroupRotation.getWidth() / 2;
-                    pivotY = rlGroupRotation.getHeight();
+                    pivotPositionY = (int) (rlGroupRotation.getY() + rlGroupRotation.getHeight() / 2);
+                    pivotX = imageView.getWidth() / 2;
+                    pivotY = imageView.getHeight();
                     Log.i(TAG, "ACTION_DOWN " + event.getX() + " " + event.getY());
                     break;
                 case MotionEvent.ACTION_UP:
@@ -64,12 +78,8 @@ public class RotateViewDemoActivity extends AppCompatActivity {
 
     private void rotateView(MotionEvent event) {
         int position[] = new int[2];
-        position[0] = (int) event.getX() + (rlGroupRotation.getWidth() / 2);
-        position[1] = (int) event.getY() + (viewTouchHolder.getHeight() / 2);
-//        position[0] = position[0] + (rlGroupRotation.getWidth() / 2);
-//        position[1] = position[1] + (viewTouchHolder.getHeight() / 2);
-//        position[0] = (int) (rlGroupRotation.getX() + rlGroupRotation.getWidth() / 2);
-//        position[1] = (int) (rlGroupRotation.getY() + viewTouchHolder.getHeight() / 2);
+        position[0] = (int) event.getX();// + (imageView.getWidth() / 2);
+        position[1] = (int) event.getY();// + (imageView.getHeight() / 2);
         Log.i(TAG, "ACTION_MOVE position" + position[0] + " " + position[1]);
         int pivotPoints[] = new int[]{pivotPositionX, pivotPositionY};
         double angle = getAngle(position, pivotPoints);
@@ -78,9 +88,9 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     }
 
     private void rotateImage(double progress) {
-        rlGroupRotation.setPivotX(pivotX);
-        rlGroupRotation.setPivotY(pivotY);
-        rlGroupRotation.setRotation((int) progress);
+        imageView.setPivotX(pivotX);
+        imageView.setPivotY(pivotY);
+        imageView.setRotation((int) progress);
     }
 
     public double getAngle(int[] position, int[] pivot) {

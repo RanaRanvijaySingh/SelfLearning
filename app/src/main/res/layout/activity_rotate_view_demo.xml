@@ -10,7 +10,8 @@
         android:id="@+id/rlGroupRotation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true">
+        android:layout_centerInParent="true"
+        android:background="@color/colorPrimaryDark">
 
         <ImageView
             android:id="@+id/imageView"
@@ -19,13 +20,5 @@
             android:layout_centerInParent="true"
             android:background="@color/colorAccent"
             android:src="@drawable/ic_transect_rotate"/>
-
-        <View
-            android:id="@+id/viewTouchHolder"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_centerHorizontal="true"
-            android:background="#FFFFFFFF"/>
-
     </RelativeLayout>
 </RelativeLayout>
