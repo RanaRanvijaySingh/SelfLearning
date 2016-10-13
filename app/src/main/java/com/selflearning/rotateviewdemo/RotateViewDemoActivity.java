@@ -18,7 +18,7 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     private static final int QUADRANT_THIRD = QUADRANT_SECOND + 1;
     private static final int QUADRANT_FORTH = QUADRANT_THIRD + 1;
     private ImageView imageView;
-    //    private RelativeLayout rlRotation;
+    private RelativeLayout rlRotation;
     private View viewTouchHolder;
     private RelativeLayout rlGroupRotation;
     private int pivotX = 0;
@@ -29,12 +29,12 @@ public class RotateViewDemoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rotate_view_demo);
         imageView = (ImageView) findViewById(R.id.imageView);
-//        rlRotation = (RelativeLayout) findViewById(rlRotation);
+        rlRotation = (RelativeLayout) findViewById(R.id.rlRotation);
         rlGroupRotation = (RelativeLayout) findViewById(R.id.rlGroupRotation);
         viewTouchHolder = findViewById(R.id.viewTouchHolder);
 //        rlRotation.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
 //        rlRotation.setOnTouchListener(backgroundTouchListener);
-        viewTouchHolder.setOnTouchListener(viewTouchListener);
+        rlRotation.setOnTouchListener(viewTouchListener);
     }
 
     private int c = 0;
@@ -64,9 +64,8 @@ public class RotateViewDemoActivity extends AppCompatActivity {
 
     private void rotateView(MotionEvent event) {
         int position[] = new int[2];
-        viewTouchHolder.getLocationOnScreen(position);
-        position[0] = (int) event.getX();
-        position[1] = (int) event.getY();
+        position[0] = (int) event.getX() + (rlGroupRotation.getWidth() / 2);
+        position[1] = (int) event.getY() + (viewTouchHolder.getHeight() / 2);
 //        position[0] = position[0] + (rlGroupRotation.getWidth() / 2);
 //        position[1] = position[1] + (viewTouchHolder.getHeight() / 2);
 //        position[0] = (int) (rlGroupRotation.getX() + rlGroupRotation.getWidth() / 2);
@@ -85,9 +84,6 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     }
 
     public double getAngle(int[] position, int[] pivot) {
-        if (position[0] == pivot[0]) {
-            return 1;
-        }
         double angle = Math.toDegrees(Math.atan2(position[1] - pivot[1], position[0] - pivot[0]));
         if (angle == -90) {
             angle = 0;
