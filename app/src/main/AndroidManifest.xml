@@ -24,7 +24,7 @@
         <activity android:name=".toolbardemo.ToolbarDemoActivity"/>
         <activity android:name=".expandablerecyclerviewdemo.ExpandableRvDemoActivity"/>
         <activity android:name=".customnotification.CustomNotificationDemoActivity"/>
-        <activity android:name=".imagerotation.RotateImageDemoActivity"/>
+        <activity android:name=".circularseekbardemo.RotateImageDemoActivity"/>
         <activity android:name=".filedemo.FileDemoActivity"/>
         <activity android:name=".tddwithmvpmvvmdemo.TddDemoActivity"/>
         <activity android:name=".sharedprefdemo.SharedPrefDemoActivity"/>

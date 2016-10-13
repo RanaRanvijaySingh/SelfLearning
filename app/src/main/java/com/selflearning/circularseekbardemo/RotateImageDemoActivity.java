@@ -1,4 +1,4 @@
-package com.selflearning.imagerotation;
+package com.selflearning.circularseekbardemo;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -10,7 +10,7 @@ import com.selflearning.customnotification.CustomNotificationDemoActivity;
 import com.selflearning.databaseupgradedemo.DatabaseUpgradeDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.filedemo.FileDemoActivity;
-import com.selflearning.imagerotation.RotateImageDemoActivity;
+import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
