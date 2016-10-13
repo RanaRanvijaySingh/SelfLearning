@@ -18,15 +18,15 @@ public class RotateView extends RelativeLayout {
     private static final int QUADRANT_SECOND = QUADRANT_FIRST + 1;
     private static final int QUADRANT_THIRD = QUADRANT_SECOND + 1;
     private static final int QUADRANT_FORTH = QUADRANT_THIRD + 1;
-    private ImageView ivRotationImage;
+    private ImageView mIvRotationImage;
     private RelativeLayout rlWrapper;
-    private int centerPositionX;
-    private int centerPositionY;
-    private int pivotX = 0;
-    private int pivotY = 0;
-    private View view;
-    private int rotateViewAngle;
-    private int rotateViewImage;
+    private int mCenterPositionX;
+    private int mCenterPositionY;
+    private int mPivotX = 0;
+    private int mPivotY = 0;
+    private View mView;
+    private int mRotateViewAngle;
+    private int mRotateViewImage;
 
     public RotateView(Context context) {
         super(context);
@@ -45,9 +45,9 @@ public class RotateView extends RelativeLayout {
     private void initializeView(Context context, AttributeSet attrs) {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        view = inflater.inflate(R.layout.view_rotation, RotateView.this);
-        getAttributes(context, attrs);
+        mView = inflater.inflate(R.layout.view_rotation, RotateView.this);
         initializeRotationView();
+        getAttributes(context, attrs);
     }
 
     /**
@@ -60,20 +60,40 @@ public class RotateView extends RelativeLayout {
         TypedArray typedArray = context.getTheme()
                 .obtainStyledAttributes(attrs, R.styleable.rotate_view, 0, 0);
         try {
-            rotateViewAngle = typedArray.getInt(R.styleable.rotate_view_angle, 0);
-            rotateViewImage = typedArray.getResourceId(R.styleable.rotate_view_image, R.mipmap.ic_launcher);
+//            loadRotationAngle(typedArray);
+            loadRotationImage(typedArray);
         } finally {
             typedArray.recycle();
         }
     }
 
     /**
-     * Function to initialize rotation view components.
+     * Function to load rotation angle.
+     *
+     * @param typedArray TypedArray
+     */
+    private void loadRotationAngle(TypedArray typedArray) {
+        mRotateViewAngle = typedArray.getInt(R.styleable.rotate_view_angle, 0);
+
+    }
+
+    /**
+     * Function to load rotation image.
+     *
+     * @param typedArray TypedArray
+     */
+    private void loadRotationImage(TypedArray typedArray) {
+        mRotateViewImage = typedArray.getResourceId(R.styleable.rotate_view_image, R.mipmap.ic_launcher);
+        setRotateViewImage(mRotateViewImage);
+    }
+
+    /**
+     * Function to initialize rotation mView components.
      */
     private void initializeRotationView() {
-        ivRotationImage = (ImageView) view.findViewById(R.id.ivRotationImage);
-        rlWrapper = (RelativeLayout) view.findViewById(R.id.rlWrapper);
-        ivRotationImage.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
+        mIvRotationImage = (ImageView) mView.findViewById(R.id.ivRotationImage);
+        rlWrapper = (RelativeLayout) mView.findViewById(R.id.rlWrapper);
+        mIvRotationImage.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
         rlWrapper.setOnTouchListener(viewTouchListener);
     }
 
@@ -81,10 +101,11 @@ public class RotateView extends RelativeLayout {
             new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
+                    setHookPositions();
                     /** Set wrapper layout size.*/
                     setWrapperSize();
                     /** Set image position in wrapper layout.*/
-                    ivRotationImage.setY(0);
+                    mIvRotationImage.setY(0);
                 }
 
                 /**
@@ -94,54 +115,53 @@ public class RotateView extends RelativeLayout {
                 private void setWrapperSize() {
                     RelativeLayout.LayoutParams layoutParams =
                             (RelativeLayout.LayoutParams) rlWrapper.getLayoutParams();
-                    int viewHeight = ivRotationImage.getHeight();
+                    int viewHeight = mIvRotationImage.getHeight();
                     layoutParams.height = viewHeight * 2;
                     layoutParams.width = viewHeight * 2;
                     rlWrapper.setLayoutParams(layoutParams);
                 }
             };
 
+    /**
+     * Function to set hook positions based on height and width of the wrapper.
+     */
+    private void setHookPositions() {
+        /** Center point from where you can calculate the rotation.*/
+        mCenterPositionX = rlWrapper.getWidth() / 2;
+        mCenterPositionY = rlWrapper.getHeight() / 2;
+        /** Pivot point for image from where you can rotate the image as a hinge.*/
+        mPivotX = mIvRotationImage.getWidth() / 2;
+        mPivotY = mIvRotationImage.getHeight() - mIvRotationImage.getWidth() / 2;
+    }
+
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {
         @Override
         public boolean onTouch(View v, MotionEvent event) {
+            int position[];
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    setHookPositions();
-                    rotateView(event);
+                    position = new int[]{(int) event.getX(), (int) event.getY()};
+                    rotateView(position);
                     break;
                 case MotionEvent.ACTION_UP:
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    rotateView(event);
+                    position = new int[]{(int) event.getX(), (int) event.getY()};
+                    rotateView(position);
                     break;
             }
             return true;
         }
-
-        /**
-         * Function to set hook positions based on height and width of the wrapper.
-         */
-        private void setHookPositions() {
-            /** Center point from where you can calculate the rotation.*/
-            centerPositionX = rlWrapper.getWidth() / 2;
-            centerPositionY = rlWrapper.getHeight() / 2;
-            /** Pivot point for image from where you can rotate the image as a hinge.*/
-            pivotX = ivRotationImage.getWidth() / 2;
-            pivotY = ivRotationImage.getHeight() - ivRotationImage.getWidth() / 2;
-        }
     };
 
     /**
-     * Function to rotate the view.
+     * Function to rotate the mView.
      *
-     * @param event MotionEvent
+     * @param position int[]
      */
-    private void rotateView(MotionEvent event) {
-        int position[] = new int[2];
-        position[0] = (int) event.getX();
-        position[1] = (int) event.getY();
-        int pivotPoints[] = new int[]{centerPositionX, centerPositionY};
-        /** Get the angle on which the view should rotate.*/
+    private void rotateView(int[] position) {
+        int pivotPoints[] = new int[]{mCenterPositionX, mCenterPositionY};
+        /** Get the angle on which the mView should rotate.*/
         double angle = getAngle(position, pivotPoints);
         rotateImage(angle);
     }
@@ -152,9 +172,9 @@ public class RotateView extends RelativeLayout {
      * @param angle double
      */
     private void rotateImage(double angle) {
-        ivRotationImage.setPivotX(pivotX);
-        ivRotationImage.setPivotY(pivotY);
-        ivRotationImage.setRotation((int) angle);
+        mIvRotationImage.setPivotX(mPivotX);
+        mIvRotationImage.setPivotY(mPivotY);
+        mIvRotationImage.setRotation((int) angle);
     }
 
     /**
@@ -207,19 +227,24 @@ public class RotateView extends RelativeLayout {
     }
 
     public int getRotateViewAngle() {
-        return rotateViewAngle;
+        return mRotateViewAngle;
     }
 
     public void setRotateViewAngle(int rotateViewAngle) {
         rotateImage(rotateViewAngle);
-        this.rotateViewAngle = rotateViewAngle;
+        this.mRotateViewAngle = rotateViewAngle;
     }
 
     public int getRotateViewImage() {
-        return rotateViewImage;
+        return mRotateViewImage;
     }
 
-    public void setRotateViewImage(int rotateViewImage) {
-        this.rotateViewImage = rotateViewImage;
+    public void setRotateViewImage(int mRotateViewImage) {
+        this.mRotateViewImage = mRotateViewImage;
+        try {
+            mIvRotationImage.setImageResource(mRotateViewImage);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
