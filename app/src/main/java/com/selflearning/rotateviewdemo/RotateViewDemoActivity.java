@@ -85,9 +85,6 @@ public class RotateViewDemoActivity extends AppCompatActivity {
 
     public double getAngle(int[] position, int[] pivot) {
         double angle = Math.toDegrees(Math.atan2(position[1] - pivot[1], position[0] - pivot[0]));
-        if (angle == -90) {
-            angle = 0;
-        }
         int quadrant = getQuadrantForPoint(position, pivot);
         switch (quadrant) {
             case QUADRANT_FIRST:
