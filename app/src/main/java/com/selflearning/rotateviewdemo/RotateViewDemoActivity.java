@@ -55,22 +55,26 @@ public class RotateViewDemoActivity extends AppCompatActivity {
                     Log.i(TAG, "ACTION_UP " + event.getX() + " " + event.getY());
                     break;
                 case MotionEvent.ACTION_MOVE:
-                    rotateView();
+                    rotateView(event);
                     break;
             }
             return true;
         }
     };
 
-    private void rotateView() {
+    private void rotateView(MotionEvent event) {
         int position[] = new int[2];
         viewTouchHolder.getLocationOnScreen(position);
+        position[0] = (int) event.getX();
+        position[1] = (int) event.getY();
+//        position[0] = position[0] + (rlGroupRotation.getWidth() / 2);
+//        position[1] = position[1] + (viewTouchHolder.getHeight() / 2);
+//        position[0] = (int) (rlGroupRotation.getX() + rlGroupRotation.getWidth() / 2);
+//        position[1] = (int) (rlGroupRotation.getY() + viewTouchHolder.getHeight() / 2);
         Log.i(TAG, "ACTION_MOVE position" + position[0] + " " + position[1]);
-        position[0] = position[0] + rlGroupRotation.getWidth() / 2;
-        position[1] = position[1] + viewTouchHolder.getHeight() / 2;
         int pivotPoints[] = new int[]{pivotPositionX, pivotPositionY};
         double angle = getAngle(position, pivotPoints);
-        Log.i(TAG, "ACTION_MOVE " + angle);
+        Log.i(TAG, "ACTION_MOVE angle" + angle);
         rotateImage(angle);
     }
 
@@ -81,6 +85,9 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     }
 
     public double getAngle(int[] position, int[] pivot) {
+        if (position[0] == pivot[0]) {
+            return 1;
+        }
         double angle = Math.toDegrees(Math.atan2(position[1] - pivot[1], position[0] - pivot[0]));
         if (angle == -90) {
             angle = 0;
