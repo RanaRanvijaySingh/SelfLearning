@@ -21,7 +21,7 @@ public class RotateImageDemoActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rotate_image_demo);
-        imageView = (ImageView) findViewById(R.id.imageView);
+        imageView = (ImageView) findViewById(R.id.ivRotationImage);
         tvAngle = (TextView) findViewById(R.id.tvAngle);
         rlRotation = (RelativeLayout) findViewById(R.id.rlRotation);
         circularSeekBar = (CircularSeekBar) findViewById(R.id.circularSeekBar);
