@@ -1,8 +1,9 @@
 package com.selflearning.rotateviewdemo;
 
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Context;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -11,8 +12,8 @@ import android.widget.RelativeLayout;
 
 import com.selflearning.R;
 
-public class RotateViewDemoActivity extends AppCompatActivity {
-    private static final String TAG = "RotateViewDemoActivity";
+public class RotateView extends RelativeLayout {
+    private static final String TAG = "RotateView";
     private static final int QUADRANT_FIRST = 1;
     private static final int QUADRANT_SECOND = QUADRANT_FIRST + 1;
     private static final int QUADRANT_THIRD = QUADRANT_SECOND + 1;
@@ -23,15 +24,57 @@ public class RotateViewDemoActivity extends AppCompatActivity {
     private int centerPositionY;
     private int pivotX = 0;
     private int pivotY = 0;
+    private View view;
+    private int rotateViewAngle;
+    private int rotateViewImage;
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rotate_view_demo);
-       /* ivRotationImage = (ImageView) findViewById(R.id.ivRotationImage);
-        rlWrapper = (RelativeLayout) findViewById(R.id.rlWrapper);
+    public RotateView(Context context) {
+        super(context);
+    }
+
+    public RotateView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initializeView(context, attrs);
+    }
+
+    public RotateView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initializeView(context, attrs);
+    }
+
+    private void initializeView(Context context, AttributeSet attrs) {
+        LayoutInflater inflater = (LayoutInflater) context
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        view = inflater.inflate(R.layout.view_rotation, RotateView.this);
+        getAttributes(context, attrs);
+        initializeRotationView();
+    }
+
+    /**
+     * Function to get the attributes values defined by user.
+     *
+     * @param context Context
+     * @param attrs   AttributeSet
+     */
+    private void getAttributes(Context context, AttributeSet attrs) {
+        TypedArray typedArray = context.getTheme()
+                .obtainStyledAttributes(attrs, R.styleable.rotate_view, 0, 0);
+        try {
+            rotateViewAngle = typedArray.getInt(R.styleable.rotate_view_angle, 0);
+            rotateViewImage = typedArray.getResourceId(R.styleable.rotate_view_image, R.mipmap.ic_launcher);
+        } finally {
+            typedArray.recycle();
+        }
+    }
+
+    /**
+     * Function to initialize rotation view components.
+     */
+    private void initializeRotationView() {
+        ivRotationImage = (ImageView) view.findViewById(R.id.ivRotationImage);
+        rlWrapper = (RelativeLayout) view.findViewById(R.id.rlWrapper);
         ivRotationImage.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
-        rlWrapper.setOnTouchListener(viewTouchListener);*/
+        rlWrapper.setOnTouchListener(viewTouchListener);
     }
 
     private ViewTreeObserver.OnGlobalLayoutListener onGlobalLayoutListener =
@@ -161,5 +204,22 @@ public class RotateViewDemoActivity extends AppCompatActivity {
         } else {
             return QUADRANT_FORTH;
         }
+    }
+
+    public int getRotateViewAngle() {
+        return rotateViewAngle;
+    }
+
+    public void setRotateViewAngle(int rotateViewAngle) {
+        rotateImage(rotateViewAngle);
+        this.rotateViewAngle = rotateViewAngle;
+    }
+
+    public int getRotateViewImage() {
+        return rotateViewImage;
+    }
+
+    public void setRotateViewImage(int rotateViewImage) {
+        this.rotateViewImage = rotateViewImage;
     }
 }
