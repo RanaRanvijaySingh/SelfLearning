@@ -28,7 +28,6 @@
     <declare-styleable name="rotate_view">
         <attr name="image" format="reference"/>
         <attr name="angle" format="integer"/>
-        <attr name="pivotPoint" format="enum"/>
     </declare-styleable>
 
 </resources>

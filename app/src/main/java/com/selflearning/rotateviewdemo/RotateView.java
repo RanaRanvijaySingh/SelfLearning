@@ -70,7 +70,6 @@ public class RotateView extends RelativeLayout {
         try {
             loadRotationAngle(typedArray);
             loadRotationImage(typedArray);
-            loadRotationPivotPoint(typedArray);
         } finally {
             typedArray.recycle();
         }
@@ -93,15 +92,6 @@ public class RotateView extends RelativeLayout {
     private void loadRotationImage(TypedArray typedArray) {
         mRotateViewImage = typedArray.getResourceId(R.styleable.rotate_view_image, R.mipmap.ic_launcher);
         setRotateViewImage(mRotateViewImage);
-    }
-
-    /**
-     * Function to load pivot point based on
-     *
-     * @param typedArray
-     */
-    private void loadRotationPivotPoint(TypedArray typedArray) {
-        mRotateViewAngle = typedArray.getInt(R.styleable.rotate_view_angle, 0);
     }
 
     /**
@@ -141,7 +131,10 @@ public class RotateView extends RelativeLayout {
         /** Set image position in wrapper layout.*/
         mIvRotationImage.setY(0);
         /** Set initial hook position.*/
-        setHookPositions();
+        setViewCenterPositions();
+        /** Set pivot position for the view.*/
+        setViewPivotPositions();
+        /** Rotate image by a given angle.*/
         rotateImageByAngle(mRotateViewAngle);
     }
 
@@ -152,21 +145,46 @@ public class RotateView extends RelativeLayout {
     private void setWrapperSize() {
         RelativeLayout.LayoutParams layoutParams =
                 (RelativeLayout.LayoutParams) mRlWrapper.getLayoutParams();
-        int viewHeight = mIvRotationImage.getHeight();
-        layoutParams.height = viewHeight * 2;
-        layoutParams.width = viewHeight * 2;
+        int viewSide = isImagePortrait()
+                ? mIvRotationImage.getHeight() : mIvRotationImage.getWidth();
+        layoutParams.height = viewSide * 2;
+        layoutParams.width = viewSide * 2;
         mRlWrapper.setLayoutParams(layoutParams);
     }
 
     /**
-     * Function to set hook positions based on height and width of the wrapper.
+     * Function to check if the image is portrait or landscape.
+     *
+     * @return boolean
      */
-    private void setHookPositions() {
+    private boolean isImagePortrait() {
+        return mIvRotationImage.getHeight() >= mIvRotationImage.getWidth();
+    }
+
+    /**
+     * Function to view center positions based on height and width of the wrapper.
+     */
+    private void setViewCenterPositions() {
         /** Center point from where you can calculate the rotation.*/
         mViewCenterPoint = new int[]{mRlWrapper.getWidth() / 2, mRlWrapper.getHeight() / 2};
+    }
+
+    /**
+     * Function to set view pivot positions.
+     */
+    private void setViewPivotPositions() {
         /** Pivot point for image from where you can rotate the image as a hinge.*/
-        mPivotX = mIvRotationImage.getWidth() / 2;
-        mPivotY = mIvRotationImage.getHeight();
+        if (isImagePortrait()) {
+            /** Hinge image from bottom point.*/
+            mPivotX = mIvRotationImage.getWidth() / 2;
+            mPivotY = mIvRotationImage.getHeight();
+        } else {
+            /** Hinge image from left point.*/
+            mPivotX = mIvRotationImage.getWidth();
+            mPivotY = mIvRotationImage.getHeight() / 2;
+            mIvRotationImage.setX(0);
+            mIvRotationImage.setY((mRlWrapper.getHeight() / 2) - (mIvRotationImage.getHeight() / 2));
+        }
     }
 
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {
@@ -247,7 +265,7 @@ public class RotateView extends RelativeLayout {
                 angle = 90 + angle;
                 break;
         }
-        return angle;
+        return isImagePortrait() ? angle : angle + 90;
     }
 
     /**
