@@ -155,13 +155,8 @@ public class RotateView extends RelativeLayout {
         /** Center point from where you can calculate the rotation.*/
         mViewCenterPoint = new int[]{mRlWrapper.getWidth() / 2, mRlWrapper.getHeight() / 2};
         /** Pivot point for image from where you can rotate the image as a hinge.*/
-//        Drawable drawable = mIvRotationImage.getDrawable();
-//        int imageHeight = drawable.getIntrinsicHeight();
-//        int imageWidth = drawable.getIntrinsicWidth();
         mPivotX = mIvRotationImage.getWidth() / 2;
         mPivotY = mIvRotationImage.getHeight() - mIvRotationImage.getWidth() / 2;
-//        mPivotX = imageWidth / 2;
-//        mPivotY = imageHeight - imageWidth / 2;
     }
 
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {
@@ -267,19 +262,39 @@ public class RotateView extends RelativeLayout {
         }
     }
 
+    /**
+     * Function to get rotation angle.
+     *
+     * @return int
+     */
     public int getRotateViewAngle() {
         return mRotateViewAngle;
     }
 
+    /**
+     * Function to set rotation angle.
+     *
+     * @param rotateViewAngle int
+     */
     public void setRotateViewAngle(int rotateViewAngle) {
         rotateImageByAngle(rotateViewAngle);
         this.mRotateViewAngle = rotateViewAngle;
     }
 
+    /**
+     * Function to get image resource.
+     *
+     * @return int
+     */
     public int getRotateViewImage() {
         return mRotateViewImage;
     }
 
+    /**
+     * Function to set rotation view image.
+     *
+     * @param mRotateViewImage int
+     */
     public void setRotateViewImage(int mRotateViewImage) {
         this.mRotateViewImage = mRotateViewImage;
         try {

@@ -22,7 +22,18 @@ public class RotateViewDemoActivity extends AppCompatActivity {
      */
     private void initializeComponents() {
         RotateView rotateView = (RotateView) findViewById(R.id.rotateView);
+        /**
+         * Adding rotation change listener on your rotation view.
+         */
         rotateView.setOnRotationChangeListener(rotationChangeListener);
+        /**
+         * Setting rotation by angle.
+         */
+        rotateView.setRotateViewAngle(60);
+        /**
+         * Setting image from drawable.
+         */
+        rotateView.setRotateViewImage(R.drawable.ic_arrow_colored);
     }
 
     private RotateView.OnRotationChangeListener rotationChangeListener =
