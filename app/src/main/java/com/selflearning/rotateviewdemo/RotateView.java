@@ -26,6 +26,15 @@ public class RotateView extends RelativeLayout {
     private int mRotateViewAngle;
     private int mRotateViewImage;
     private int[] mViewCenterPoint;
+    private OnRotationChangeListener mRotationChangeListener;
+
+    public void setOnRotationChangeListener(OnRotationChangeListener rotationChangeListener) {
+        this.mRotationChangeListener = rotationChangeListener;
+    }
+
+    public interface OnRotationChangeListener {
+        void rotationChange(double angle);
+    }
 
     public RotateView(Context context) {
         super(context);
@@ -45,7 +54,7 @@ public class RotateView extends RelativeLayout {
         LayoutInflater inflater = (LayoutInflater) context
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         mView = inflater.inflate(R.layout.view_rotation, RotateView.this);
-        initializeRotationView();
+        initializeComponents();
         getAttributes(context, attrs);
     }
 
@@ -88,10 +97,11 @@ public class RotateView extends RelativeLayout {
     /**
      * Function to initialize rotation mView components.
      */
-    private void initializeRotationView() {
+    private void initializeComponents() {
         mIvRotationImage = (ImageView) mView.findViewById(R.id.ivRotationImage);
         mRlWrapper = (RelativeLayout) mView.findViewById(R.id.rlWrapper);
         mIvRotationImage.getViewTreeObserver().addOnGlobalLayoutListener(onGlobalLayoutListener);
+        mRlWrapper.addOnLayoutChangeListener(onLayoutChangeListener);
         mRlWrapper.setOnTouchListener(viewTouchListener);
     }
 
@@ -99,28 +109,44 @@ public class RotateView extends RelativeLayout {
             new ViewTreeObserver.OnGlobalLayoutListener() {
                 @Override
                 public void onGlobalLayout() {
-                    /** Set wrapper layout size.*/
-                    setWrapperSize();
-                    /** Set image position in wrapper layout.*/
-                    mIvRotationImage.setY(0);
-                    /** Set initial hook position.*/
-                    setHookPositions();
-                    rotateImageByAngle(mRotateViewAngle);
-                }
-
-                /**
-                 * Function to set wrapper height and width depending on image which you give for
-                 * rotation.
-                 */
-                private void setWrapperSize() {
-                    RelativeLayout.LayoutParams layoutParams =
-                            (RelativeLayout.LayoutParams) mRlWrapper.getLayoutParams();
-                    int viewHeight = mIvRotationImage.getHeight();
-                    layoutParams.height = viewHeight * 2;
-                    layoutParams.width = viewHeight * 2;
-                    mRlWrapper.setLayoutParams(layoutParams);
+                    initializeRotationView();
+                    stopViewTreeObserver();
                 }
             };
+
+    private OnLayoutChangeListener onLayoutChangeListener = new OnLayoutChangeListener() {
+        @Override
+        public void onLayoutChange(View v, int left, int top, int right, int bottom,
+                                   int oldLeft, int oldTop, int oldRight, int oldBottom) {
+            if (left == 0 && top == 0 && right == 0 && bottom == 0) {
+                return;
+            }
+            initializeRotationView();
+        }
+    };
+
+    private void initializeRotationView() {
+        /** Set wrapper layout size.*/
+        setWrapperSize();
+        /** Set image position in wrapper layout.*/
+        mIvRotationImage.setY(0);
+        /** Set initial hook position.*/
+        setHookPositions();
+        rotateImageByAngle(mRotateViewAngle);
+    }
+
+    /**
+     * Function to set wrapper height and width depending on image which you give for
+     * rotation.
+     */
+    private void setWrapperSize() {
+        RelativeLayout.LayoutParams layoutParams =
+                (RelativeLayout.LayoutParams) mRlWrapper.getLayoutParams();
+        int viewHeight = mIvRotationImage.getHeight();
+        layoutParams.height = viewHeight * 2;
+        layoutParams.width = viewHeight * 2;
+        mRlWrapper.setLayoutParams(layoutParams);
+    }
 
     /**
      * Function to set hook positions based on height and width of the wrapper.
@@ -129,8 +155,13 @@ public class RotateView extends RelativeLayout {
         /** Center point from where you can calculate the rotation.*/
         mViewCenterPoint = new int[]{mRlWrapper.getWidth() / 2, mRlWrapper.getHeight() / 2};
         /** Pivot point for image from where you can rotate the image as a hinge.*/
+//        Drawable drawable = mIvRotationImage.getDrawable();
+//        int imageHeight = drawable.getIntrinsicHeight();
+//        int imageWidth = drawable.getIntrinsicWidth();
         mPivotX = mIvRotationImage.getWidth() / 2;
         mPivotY = mIvRotationImage.getHeight() - mIvRotationImage.getWidth() / 2;
+//        mPivotX = imageWidth / 2;
+//        mPivotY = imageHeight - imageWidth / 2;
     }
 
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {
@@ -139,7 +170,6 @@ public class RotateView extends RelativeLayout {
             int position[];
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
-                    stopViewTreeObserver();
                     position = new int[]{(int) event.getX(), (int) event.getY()};
                     rotateViewForPosition(position, mViewCenterPoint);
                     break;
@@ -185,6 +215,7 @@ public class RotateView extends RelativeLayout {
         mIvRotationImage.setPivotX(mPivotX);
         mIvRotationImage.setPivotY(mPivotY);
         mIvRotationImage.setRotation((int) angle);
+        mRotationChangeListener.rotationChange(angle);
     }
 
     /**
