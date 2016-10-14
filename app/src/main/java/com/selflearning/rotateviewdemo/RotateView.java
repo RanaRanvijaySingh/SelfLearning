@@ -70,6 +70,7 @@ public class RotateView extends RelativeLayout {
         try {
             loadRotationAngle(typedArray);
             loadRotationImage(typedArray);
+            loadRotationPivotPoint(typedArray);
         } finally {
             typedArray.recycle();
         }
@@ -92,6 +93,15 @@ public class RotateView extends RelativeLayout {
     private void loadRotationImage(TypedArray typedArray) {
         mRotateViewImage = typedArray.getResourceId(R.styleable.rotate_view_image, R.mipmap.ic_launcher);
         setRotateViewImage(mRotateViewImage);
+    }
+
+    /**
+     * Function to load pivot point based on
+     *
+     * @param typedArray
+     */
+    private void loadRotationPivotPoint(TypedArray typedArray) {
+        mRotateViewAngle = typedArray.getInt(R.styleable.rotate_view_angle, 0);
     }
 
     /**
@@ -156,7 +166,7 @@ public class RotateView extends RelativeLayout {
         mViewCenterPoint = new int[]{mRlWrapper.getWidth() / 2, mRlWrapper.getHeight() / 2};
         /** Pivot point for image from where you can rotate the image as a hinge.*/
         mPivotX = mIvRotationImage.getWidth() / 2;
-        mPivotY = mIvRotationImage.getHeight() - mIvRotationImage.getWidth() / 2;
+        mPivotY = mIvRotationImage.getHeight();
     }
 
     private View.OnTouchListener viewTouchListener = new View.OnTouchListener() {

@@ -29,11 +29,11 @@ public class RotateViewDemoActivity extends AppCompatActivity {
         /**
          * Setting rotation by angle.
          */
-        rotateView.setRotateViewAngle(60);
+//        rotateView.setRotateViewAngle(60);
         /**
          * Setting image from drawable.
          */
-        rotateView.setRotateViewImage(R.drawable.ic_arrow_colored);
+//        rotateView.setRotateViewImage(R.drawable.ic_arrow_colored);
     }
 
     private RotateView.OnRotationChangeListener rotationChangeListener =
