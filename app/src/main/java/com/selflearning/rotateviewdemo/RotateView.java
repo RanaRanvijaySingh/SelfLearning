@@ -73,7 +73,6 @@ public class RotateView extends RelativeLayout {
      */
     private void loadRotationAngle(TypedArray typedArray) {
         mRotateViewAngle = typedArray.getInt(R.styleable.rotate_view_angle, 0);
-
     }
 
     /**
@@ -106,6 +105,7 @@ public class RotateView extends RelativeLayout {
                     mIvRotationImage.setY(0);
                     /** Set initial hook position.*/
                     setHookPositions();
+                    rotateImageByAngle(mRotateViewAngle);
                 }
 
                 /**
@@ -139,6 +139,7 @@ public class RotateView extends RelativeLayout {
             int position[];
             switch (event.getAction()) {
                 case MotionEvent.ACTION_DOWN:
+                    stopViewTreeObserver();
                     position = new int[]{(int) event.getX(), (int) event.getY()};
                     rotateViewForPosition(position, mViewCenterPoint);
                     break;
@@ -152,6 +153,16 @@ public class RotateView extends RelativeLayout {
             return true;
         }
     };
+
+    /**
+     * Function to stop view tree observer.
+     */
+    private void stopViewTreeObserver() {
+        if (mIvRotationImage.getViewTreeObserver().isAlive()) {
+            mIvRotationImage.getViewTreeObserver()
+                    .removeOnGlobalLayoutListener(onGlobalLayoutListener);
+        }
+    }
 
     /**
      * Function to rotate the mView.

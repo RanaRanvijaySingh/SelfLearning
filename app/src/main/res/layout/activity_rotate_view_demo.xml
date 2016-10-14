@@ -9,6 +9,6 @@
     <com.selflearning.rotateviewdemo.RotateView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:angle="30"
+        app:angle="90"
         app:image="@drawable/ic_transect_rotate"/>
 </RelativeLayout>
