@@ -238,7 +238,9 @@ public class RotateView extends RelativeLayout {
         mIvRotationImage.setPivotX(mPivotX);
         mIvRotationImage.setPivotY(mPivotY);
         mIvRotationImage.setRotation((int) angle);
-        mRotationChangeListener.rotationChange(angle);
+        if (mRotationChangeListener != null) {
+            mRotationChangeListener.rotationChange(angle);
+        }
     }
 
     /**
