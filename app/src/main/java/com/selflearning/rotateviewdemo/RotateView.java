@@ -2,6 +2,7 @@ package com.selflearning.rotateviewdemo;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -212,8 +213,13 @@ public class RotateView extends RelativeLayout {
      */
     private void stopViewTreeObserver() {
         if (mIvRotationImage.getViewTreeObserver().isAlive()) {
-            mIvRotationImage.getViewTreeObserver()
-                    .removeOnGlobalLayoutListener(onGlobalLayoutListener);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+                mIvRotationImage.getViewTreeObserver()
+                        .removeOnGlobalLayoutListener(onGlobalLayoutListener);
+            } else {
+                mIvRotationImage.getViewTreeObserver()
+                        .removeGlobalOnLayoutListener(onGlobalLayoutListener);
+            }
         }
     }
 
