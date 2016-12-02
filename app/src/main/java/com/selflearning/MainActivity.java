@@ -1,19 +1,20 @@
 package com.selflearning;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
 import com.selflearning.customnotification.CustomNotificationDemoActivity;
 import com.selflearning.databaseupgradedemo.DatabaseUpgradeDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.filedemo.FileDemoActivity;
-import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
+import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
 import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(SharedPrefDemoActivity.class);
         activityList.add(DatabaseUpgradeDemoActivity.class);
         activityList.add(RotateViewDemoActivity.class);
+        activityList.add(RxAndroidDemoActivity.class);
     }
 
     @Override
@@ -69,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_shared_pref_screen));
         demoList.add(getResources().getString(R.string.demo_database_upgrade));
         demoList.add(getResources().getString(R.string.demo_custom_rotate_view));
+        demoList.add(getResources().getString(R.string.demo_rx_android));
         return demoList;
     }
 

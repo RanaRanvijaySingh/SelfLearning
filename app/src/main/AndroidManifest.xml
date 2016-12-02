@@ -30,6 +30,7 @@
         <activity android:name=".sharedprefdemo.SharedPrefDemoActivity"/>
         <activity android:name=".databaseupgradedemo.DatabaseUpgradeDemoActivity"/>
         <activity android:name=".rotateviewdemo.RotateViewDemoActivity"/>
+        <activity android:name=".rxandroiddemo.RxAndroidDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>
