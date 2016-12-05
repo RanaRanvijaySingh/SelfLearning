@@ -26,7 +26,6 @@ public class RxAndroidDemoActivity extends AppCompatActivity {
 
     @BindView(R.id.tvData)
     TextView tvData;
-    private Observable<String> mObservable;
     private Subscription mSubscription;
 
     @Override
@@ -46,7 +45,7 @@ public class RxAndroidDemoActivity extends AppCompatActivity {
 
     @OnClick(R.id.btnAttachObserver)
     void onClickAttachObserverButton() {
-        mObservable = Observable.just("Observer attached");
+        Observable<String> mObservable = Observable.just("Observer attached");
         mSubscription = mObservable.subscribe(new Observer<String>() {
             @Override
             public void onCompleted() {
