@@ -14,6 +14,8 @@
     <string name="demo_rx_android">RxAndroid demo</string>
     <string name="btn_attach_observer">Attach observer</string>
     <string name="btn_detach_observer">Detach observer</string>
+    <string name="btn_using_operators">Using operators</string>
+    <string name="btn_asynchronous">Asynchronous job</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>
