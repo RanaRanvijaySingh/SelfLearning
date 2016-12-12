@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.selflearning.R;
 
@@ -12,10 +13,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class ObserverPatternDemoActivity extends AppCompatActivity {
+public class ObserverPatternDemoActivity extends AppCompatActivity implements OnConvertedListener {
 
     @BindView(R.id.etDecimalValue)
     EditText etDecimalValue;
+    @BindView(R.id.tvData)
+    TextView tvData;
     private ConverterSubject mConververterSubject;
 
     @Override
@@ -27,7 +30,7 @@ public class ObserverPatternDemoActivity extends AppCompatActivity {
     }
 
     private void initializeComponents() {
-        mConververterSubject = new ConverterSubject();
+        mConververterSubject = new ConverterSubject(this);
         new BinaryObserver(mConververterSubject);
         new OctalObserver(mConververterSubject);
         new HexaObserver(mConververterSubject);
@@ -45,5 +48,13 @@ public class ObserverPatternDemoActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void onConvert(String convertedValue) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("\n")
+                .append(convertedValue);
+        tvData.setText(stringBuilder.toString());
     }
 }

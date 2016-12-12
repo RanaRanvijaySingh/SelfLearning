@@ -14,5 +14,6 @@ public class OctalObserver implements MyObservers {
     public void convert(int decimalValues) {
         String convertedValue = Integer.toOctalString(decimalValues);
         Log.i("", convertedValue + "");
+        mSubject.onConverted(convertedValue);
     }
 }
