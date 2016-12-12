@@ -16,12 +16,21 @@ public class ObserverPatternDemoActivity extends AppCompatActivity {
 
     @BindView(R.id.etDecimalValue)
     EditText etDecimalValue;
+    private ConverterSubject mConververterSubject;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_observer_pattern);
         ButterKnife.bind(this);
+        initializeComponents();
+    }
+
+    private void initializeComponents() {
+        mConververterSubject = new ConverterSubject();
+        new BinaryObserver(mConververterSubject);
+        new OctalObserver(mConververterSubject);
+        new HexaObserver(mConververterSubject);
     }
 
     @OnClick(R.id.btnConvert)
@@ -32,7 +41,7 @@ public class ObserverPatternDemoActivity extends AppCompatActivity {
         }
         try {
             int decimalValue = Integer.parseInt(strDecimalValue);
-            //Send the broadcast.
+            mConververterSubject.convert(decimalValue);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }

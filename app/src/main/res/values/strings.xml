@@ -18,6 +18,7 @@
     <string name="btn_asynchronous">Asynchronous job</string>
     <string name="et_enter_decimal_digit">Enter decimal digit</string>
     <string name="btn_convert">Convert</string>
+    <string name="demo_observer_pattern">Observer pattern demo</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>

@@ -31,6 +31,7 @@
         <activity android:name=".databaseupgradedemo.DatabaseUpgradeDemoActivity"/>
         <activity android:name=".rotateviewdemo.RotateViewDemoActivity"/>
         <activity android:name=".rxandroiddemo.RxAndroidDemoActivity"/>
+        <activity android:name=".observerpattern.ObserverPatternDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

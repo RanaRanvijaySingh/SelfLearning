@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_database_upgrade));
         demoList.add(getResources().getString(R.string.demo_custom_rotate_view));
         demoList.add(getResources().getString(R.string.demo_rx_android));
+        demoList.add(getResources().getString(R.string.demo_observer_pattern));
         return demoList;
     }
 
