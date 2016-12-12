@@ -16,6 +16,8 @@
     <string name="btn_detach_observer">Detach observer</string>
     <string name="btn_using_operators">Using operators</string>
     <string name="btn_asynchronous">Asynchronous job</string>
+    <string name="et_enter_decimal_digit">Enter decimal digit</string>
+    <string name="btn_convert">Convert</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>

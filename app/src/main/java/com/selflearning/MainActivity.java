@@ -13,6 +13,7 @@ import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.filedemo.FileDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
+import com.selflearning.observerpattern.ObserverPatternDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(DatabaseUpgradeDemoActivity.class);
         activityList.add(RotateViewDemoActivity.class);
         activityList.add(RxAndroidDemoActivity.class);
+        activityList.add(ObserverPatternDemoActivity.class);
     }
 
     @Override
