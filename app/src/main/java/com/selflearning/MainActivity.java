@@ -17,6 +17,7 @@ import com.selflearning.observerpattern.ObserverPatternDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
+import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
 import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 
@@ -41,6 +42,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(RotateViewDemoActivity.class);
         activityList.add(RxAndroidDemoActivity.class);
         activityList.add(ObserverPatternDemoActivity.class);
+        activityList.add(SwipeDemoActivity.class);
     }
 
     @Override
@@ -75,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_custom_rotate_view));
         demoList.add(getResources().getString(R.string.demo_rx_android));
         demoList.add(getResources().getString(R.string.demo_observer_pattern));
+        demoList.add(getResources().getString(R.string.demo_swipe_layout));
         return demoList;
     }
 

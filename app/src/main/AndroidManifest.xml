@@ -32,6 +32,7 @@
         <activity android:name=".rotateviewdemo.RotateViewDemoActivity"/>
         <activity android:name=".rxandroiddemo.RxAndroidDemoActivity"/>
         <activity android:name=".observerpattern.ObserverPatternDemoActivity"/>
+        <activity android:name=".swipelayoutdemo.SwipeDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>
