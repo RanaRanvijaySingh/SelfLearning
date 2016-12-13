@@ -19,7 +19,7 @@ public class ObserverPatternDemoActivity extends AppCompatActivity implements On
     EditText etDecimalValue;
     @BindView(R.id.tvData)
     TextView tvData;
-    private ConverterSubject mConververterSubject;
+    private ConverterSubject mConverterSubject;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,10 +30,10 @@ public class ObserverPatternDemoActivity extends AppCompatActivity implements On
     }
 
     private void initializeComponents() {
-        mConververterSubject = new ConverterSubject(this);
-        new BinaryObserver(mConververterSubject);
-        new OctalObserver(mConververterSubject);
-        new HexaObserver(mConververterSubject);
+        mConverterSubject = new ConverterSubject(this);
+        new BinaryObserver(mConverterSubject);
+        new OctalObserver(mConverterSubject);
+        new HexObserver(mConverterSubject);
     }
 
     @OnClick(R.id.btnConvert)
@@ -44,7 +44,7 @@ public class ObserverPatternDemoActivity extends AppCompatActivity implements On
         }
         try {
             int decimalValue = Integer.parseInt(strDecimalValue);
-            mConververterSubject.convert(decimalValue);
+            mConverterSubject.convert(decimalValue);
         } catch (NumberFormatException e) {
             e.printStackTrace();
         }
@@ -53,7 +53,9 @@ public class ObserverPatternDemoActivity extends AppCompatActivity implements On
     @Override
     public void onConvert(String convertedValue) {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("\n")
+        stringBuilder
+                .append(tvData.getText().toString())
+                .append("\n")
                 .append(convertedValue);
         tvData.setText(stringBuilder.toString());
     }

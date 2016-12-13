@@ -1,7 +1,5 @@
 package com.selflearning.observerpattern;
 
-import android.util.Log;
-
 public class OctalObserver implements MyObservers {
     private ConverterSubject mSubject;
 
@@ -13,7 +11,8 @@ public class OctalObserver implements MyObservers {
     @Override
     public void convert(int decimalValues) {
         String convertedValue = Integer.toOctalString(decimalValues);
-        Log.i("", convertedValue + "");
-        mSubject.onConverted(convertedValue);
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Octal : ").append(convertedValue);
+        mSubject.onConverted(stringBuilder.toString());
     }
 }

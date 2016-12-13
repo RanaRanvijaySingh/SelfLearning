@@ -1,7 +1,5 @@
 package com.selflearning.observerpattern;
 
-import android.util.Log;
-
 public class BinaryObserver implements MyObservers {
     private ConverterSubject mSubject;
 
@@ -13,6 +11,8 @@ public class BinaryObserver implements MyObservers {
     @Override
     public void convert(int decimalValues) {
         String convertedValue = Integer.toBinaryString(decimalValues);
-        Log.i("", convertedValue + "");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Binary : ").append(convertedValue);
+        mSubject.onConverted(stringBuilder.toString());
     }
 }

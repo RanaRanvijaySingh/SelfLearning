@@ -1,11 +1,9 @@
 package com.selflearning.observerpattern;
 
-import android.util.Log;
-
-public class HexaObserver implements MyObservers {
+public class HexObserver implements MyObservers {
     private ConverterSubject mSubject;
 
-    public HexaObserver(ConverterSubject subject) {
+    public HexObserver(ConverterSubject subject) {
         this.mSubject = subject;
         this.mSubject.attach(this);
     }
@@ -13,6 +11,8 @@ public class HexaObserver implements MyObservers {
     @Override
     public void convert(int decimalValues) {
         String convertedValue = Integer.toHexString(decimalValues);
-        Log.i("", convertedValue + "");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Hex : ").append(convertedValue);
+        mSubject.onConverted(stringBuilder.toString());
     }
 }
