@@ -33,6 +33,7 @@
         <activity android:name=".rxandroiddemo.RxAndroidDemoActivity"/>
         <activity android:name=".observerpattern.ObserverPatternDemoActivity"/>
         <activity android:name=".swipelayoutdemo.SwipeDemoActivity"/>
+        <activity android:name=".localizationdemo.LocalizationDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

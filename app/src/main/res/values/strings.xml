@@ -20,6 +20,8 @@
     <string name="btn_convert">Convert</string>
     <string name="demo_observer_pattern">Observer pattern demo</string>
     <string name="demo_swipe_layout">Swipe layout demo</string>
+    <string name="textview_welcome">Welcome</string>
+    <string name="demo_localization">localization demo</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>

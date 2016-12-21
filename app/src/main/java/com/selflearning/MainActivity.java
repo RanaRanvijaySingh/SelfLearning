@@ -12,6 +12,7 @@ import com.selflearning.databaseupgradedemo.DatabaseUpgradeDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
 import com.selflearning.filedemo.FileDemoActivity;
 import com.selflearning.loaderdemo.LoaderDemoActivity;
+import com.selflearning.localizationdemo.LocalizationDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.observerpattern.ObserverPatternDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
@@ -43,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(RxAndroidDemoActivity.class);
         activityList.add(ObserverPatternDemoActivity.class);
         activityList.add(SwipeDemoActivity.class);
+        activityList.add(LocalizationDemoActivity.class);
     }
 
     @Override
@@ -78,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_rx_android));
         demoList.add(getResources().getString(R.string.demo_observer_pattern));
         demoList.add(getResources().getString(R.string.demo_swipe_layout));
+        demoList.add(getResources().getString(R.string.demo_localization));
         return demoList;
     }
 
