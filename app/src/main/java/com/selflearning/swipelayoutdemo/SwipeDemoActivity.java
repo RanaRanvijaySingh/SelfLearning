@@ -29,4 +29,9 @@ public class SwipeDemoActivity extends AppCompatActivity {
         Toast.makeText(this, "Surface clicked", Toast.LENGTH_SHORT).show();
         swipeLayout.close();
     }
+
+    @OnClick(R.id.buttonBottomWrapper)
+    void onClickBottomWrapper() {
+        Toast.makeText(this, "Bottom Wrapper clicked", Toast.LENGTH_SHORT).show();
+    }
 }
