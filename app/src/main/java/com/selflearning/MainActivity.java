@@ -15,6 +15,7 @@ import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.localizationdemo.LocalizationDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.observerpattern.ObserverPatternDemoActivity;
+import com.selflearning.pulltorefresh.PullToRefreshDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(ObserverPatternDemoActivity.class);
         activityList.add(SwipeDemoActivity.class);
         activityList.add(LocalizationDemoActivity.class);
+        activityList.add(PullToRefreshDemoActivity.class);
     }
 
     @Override
@@ -81,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_observer_pattern));
         demoList.add(getResources().getString(R.string.demo_swipe_layout));
         demoList.add(getResources().getString(R.string.demo_localization));
+        demoList.add(getResources().getString(R.string.demo_pull_to_refresh));
         return demoList;
     }
 
