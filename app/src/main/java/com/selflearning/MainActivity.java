@@ -64,6 +64,11 @@ public class MainActivity extends AppCompatActivity {
         rvDemos.setAdapter(demoAdapter);
     }
 
+    /**
+     * Function to get demo list.
+     *
+     * @return List
+     */
     private List<String> getDemoList() {
         final List<String> demoList = new ArrayList<>();
         demoList.add(getResources().getString(R.string.demo_material_design));
