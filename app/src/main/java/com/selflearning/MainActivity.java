@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
         initializeDemoList();
     }
 
+    /**
+     * Function to initialie demo list
+     */
     private void initializeDemoList() {
         final RecyclerView rvDemos = (RecyclerView) findViewById(R.id.rvDemos);
         rvDemos.setHasFixedSize(true);
