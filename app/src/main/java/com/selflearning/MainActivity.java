@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.selflearning.advancefabdemo.AdvanceFABDemoActivity;
 import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
+import com.selflearning.customfabdemo.CustomFABDemoActivity;
 import com.selflearning.customnotification.CustomNotificationDemoActivity;
 import com.selflearning.databaseupgradedemo.DatabaseUpgradeDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
@@ -47,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(SwipeDemoActivity.class);
         activityList.add(LocalizationDemoActivity.class);
         activityList.add(PullToRefreshDemoActivity.class);
+        activityList.add(CustomFABDemoActivity.class);
+        activityList.add(AdvanceFABDemoActivity.class);
     }
 
     @Override
@@ -84,6 +88,8 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_swipe_layout));
         demoList.add(getResources().getString(R.string.demo_localization));
         demoList.add(getResources().getString(R.string.demo_pull_to_refresh));
+        demoList.add(getResources().getString(R.string.demo_custom_fab));
+        demoList.add(getResources().getString(R.string.demo_advance_fab));
         return demoList;
     }
 

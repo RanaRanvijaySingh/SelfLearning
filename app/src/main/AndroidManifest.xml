@@ -35,6 +35,8 @@
         <activity android:name=".swipelayoutdemo.SwipeDemoActivity"/>
         <activity android:name=".localizationdemo.LocalizationDemoActivity"/>
         <activity android:name=".pulltorefresh.PullToRefreshDemoActivity"/>
+        <activity android:name=".customfabdemo.CustomFABDemoActivity"/>
+        <activity android:name=".advancefabdemo.AdvanceFABDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>
