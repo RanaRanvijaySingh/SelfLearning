@@ -37,6 +37,7 @@
         <activity android:name=".pulltorefresh.PullToRefreshDemoActivity"/>
         <activity android:name=".customfabdemo.CustomFABDemoActivity"/>
         <activity android:name=".advancefabdemo.AdvanceFABDemoActivity"/>
+        <activity android:name=".twodimensionfabdemo.TwoDimensionFABDemoActivity"/>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>

@@ -24,6 +24,7 @@ import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
 import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
 import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
+import com.selflearning.twodimensionfabdemo.TwoDimensionFABDemoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(PullToRefreshDemoActivity.class);
         activityList.add(CustomFABDemoActivity.class);
         activityList.add(AdvanceFABDemoActivity.class);
+        activityList.add(TwoDimensionFABDemoActivity.class);
     }
 
     @Override
@@ -90,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_pull_to_refresh));
         demoList.add(getResources().getString(R.string.demo_custom_fab));
         demoList.add(getResources().getString(R.string.demo_advance_fab));
+        demoList.add(getResources().getString(R.string.demo_2d_fab));
         return demoList;
     }
 
