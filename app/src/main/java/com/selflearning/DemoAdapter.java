@@ -37,14 +37,14 @@ public class DemoAdapter extends RecyclerView.Adapter<DemoAdapter.DemoViewHolder
     public class DemoViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         public TextView tvDemoName;
 
-        public DemoViewHolder(View itemView) {
+        public DemoViewHolder(final View itemView) {
             super(itemView);
             tvDemoName = (TextView) itemView.findViewById(R.id.tvDemoName);
             tvDemoName.setOnClickListener(this);
         }
 
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             mDemoClickListener.selectedPosition(getAdapterPosition());
         }
     }
