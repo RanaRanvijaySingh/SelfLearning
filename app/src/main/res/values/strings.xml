@@ -22,6 +22,11 @@
     <string name="demo_swipe_layout">Swipe layout demo</string>
     <string name="textview_welcome">Welcome</string>
     <string name="demo_localization">localization demo</string>
+    <string name="demo_pull_to_refresh">Pull to refresh demo</string>
+    <string name="textview_pull_to_refresh">Pull to refresh</string>
+    <string name="demo_advance_fab">Advance FAB</string>
+    <string name="demo_custom_fab">Custom FAB</string>
+    <string name="demo_2d_fab">2-D FAB demo</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>

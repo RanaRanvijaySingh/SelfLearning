@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.selflearning.advancefabdemo.AdvanceFABDemoActivity;
 import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
+import com.selflearning.customfabdemo.CustomFABDemoActivity;
 import com.selflearning.customnotification.CustomNotificationDemoActivity;
 import com.selflearning.databaseupgradedemo.DatabaseUpgradeDemoActivity;
 import com.selflearning.expandablerecyclerviewdemo.ExpandableRvDemoActivity;
@@ -15,12 +17,14 @@ import com.selflearning.loaderdemo.LoaderDemoActivity;
 import com.selflearning.localizationdemo.LocalizationDemoActivity;
 import com.selflearning.materialdesigndemo.MaterialDesignDemoActivity;
 import com.selflearning.observerpattern.ObserverPatternDemoActivity;
+import com.selflearning.pulltorefresh.PullToRefreshDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
 import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
 import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
+import com.selflearning.twodimensionfabdemo.TwoDimensionFABDemoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(ObserverPatternDemoActivity.class);
         activityList.add(SwipeDemoActivity.class);
         activityList.add(LocalizationDemoActivity.class);
+        activityList.add(PullToRefreshDemoActivity.class);
+        activityList.add(CustomFABDemoActivity.class);
+        activityList.add(AdvanceFABDemoActivity.class);
+        activityList.add(TwoDimensionFABDemoActivity.class);
     }
 
     @Override
@@ -89,6 +97,10 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_observer_pattern));
         demoList.add(getResources().getString(R.string.demo_swipe_layout));
         demoList.add(getResources().getString(R.string.demo_localization));
+        demoList.add(getResources().getString(R.string.demo_pull_to_refresh));
+        demoList.add(getResources().getString(R.string.demo_custom_fab));
+        demoList.add(getResources().getString(R.string.demo_advance_fab));
+        demoList.add(getResources().getString(R.string.demo_2d_fab));
         return demoList;
     }
 
