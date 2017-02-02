@@ -6,7 +6,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.selflearning.R;
-import com.selflearning.toolbardemo.SimpleListAdapter;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,7 +16,7 @@ public class TddDemoActivity extends AppCompatActivity implements CommentView {
 
     private static final String TAG = "TDD with mvp-mvvm";
     private CommentPresenter mCommentPresenter;
-    private CommentListAdapter simpleListAdapter;
+    private CommentListAdapter mSimpleListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +38,14 @@ public class TddDemoActivity extends AppCompatActivity implements CommentView {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvStrings.setLayoutManager(layoutManager);
-        simpleListAdapter = new CommentListAdapter(null);
-        rvStrings.setAdapter(simpleListAdapter);
+        mSimpleListAdapter = new CommentListAdapter(null);
+        rvStrings.setAdapter(mSimpleListAdapter);
     }
 
     @Override
     public void setList(List<Comment> commentList) {
-        simpleListAdapter.setList(commentList);
-        simpleListAdapter.notifyDataSetChanged();
+        mSimpleListAdapter.setList(commentList);
+        mSimpleListAdapter.notifyDataSetChanged();
     }
 
     /**

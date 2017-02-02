@@ -12,10 +12,42 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
+    lintOptions {
+        checkReleaseBuilds false
+        // Or, if you prefer, you can continue to check for errors in release builds,
+        // but continue the build even when errors are found:
+        abortOnError false
+    }
+
+    signingConfigs {
+        releaseConfig {
+            storeFile file("keystore.jks")
+            storePassword("123456")
+            keyAlias "SelfLearning"
+            keyPassword "123456"
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.releaseConfig
+        }
+
+        debug {
+            debuggable true
+        }
+    }
+
+    productFlavors {
+        develop {
+
+        }
+
+        production {
+
         }
     }
 }
@@ -41,7 +73,6 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
-    compile 'com.daimajia.swipelayout:library:1.2.0@aar'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
     compile 'com.getbase:floatingactionbutton:1.10.1'
 }
