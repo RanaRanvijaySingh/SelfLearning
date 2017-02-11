@@ -40,7 +40,6 @@ class CommentPresenter {
 //        BufferedReader bufferedReader = mCommentView.getBufferReader();
         /** Second way to get android dependent components */
         BufferedReader bufferedReader = mCommentRepo.getBufferReader();
-
         if (bufferedReader == null) {
             return null;
         }

@@ -8,26 +8,22 @@
 
     <Button
         android:id="@+id/btnAttachObserver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/buttonDefaultMW"
         android:text="@string/btn_attach_observer"/>
 
     <Button
         android:id="@+id/btnDetachObserver"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/buttonDefaultMW"
         android:text="@string/btn_detach_observer"/>
 
     <Button
         android:id="@+id/btnUsingOperatorsExample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/buttonDefaultMW"
         android:text="@string/btn_using_operators"/>
 
     <Button
         android:id="@+id/btnAsynchronousExample"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        style="@style/buttonDefaultMW"
         android:text="@string/btn_asynchronous"/>
 
     <ScrollView

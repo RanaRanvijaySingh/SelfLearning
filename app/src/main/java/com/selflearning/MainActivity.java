@@ -56,24 +56,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initializeDemoList();
     }
 
+    /**
+     * Function to initialize demo list
+     */
     private void initializeDemoList() {
-        RecyclerView rvDemos = (RecyclerView) findViewById(R.id.rvDemos);
+        final RecyclerView rvDemos = (RecyclerView) findViewById(R.id.rvDemos);
         rvDemos.setHasFixedSize(true);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvDemos.setLayoutManager(layoutManager);
-        DemoAdapter demoAdapter = new DemoAdapter(getDemoList(), demoClickListener);
+        final DemoAdapter demoAdapter = new DemoAdapter(getDemoList(), demoClickListener);
         rvDemos.setAdapter(demoAdapter);
     }
 
+    /**
+     * Function to get demo list.
+     *
+     * @return List
+     */
     private List<String> getDemoList() {
-        List<String> demoList = new ArrayList<>();
+        final List<String> demoList = new ArrayList<>();
         demoList.add(getResources().getString(R.string.demo_material_design));
         demoList.add(getResources().getString(R.string.demo_loader));
         demoList.add(getResources().getString(R.string.demo_toolbar));
@@ -96,14 +104,14 @@ public class MainActivity extends AppCompatActivity {
         return demoList;
     }
 
-    private DemoClickListener demoClickListener = new DemoClickListener() {
+    private final DemoClickListener demoClickListener = new DemoClickListener() {
         @Override
         public void selectedPosition(int adapterPosition) {
             startActivity(activityList.get(adapterPosition));
         }
     };
 
-    public void startActivity(Class aClass) {
+    public void startActivity(final Class aClass) {
         startActivity(new Intent(this, aClass));
     }
 }

@@ -5,6 +5,12 @@ public class Comment {
     private String email;
     private String body;
 
+    public Comment(String name, String email, String body) {
+        this.name = name;
+        this.body = body;
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
