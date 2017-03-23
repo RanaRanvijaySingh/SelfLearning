@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+        android:id="@+id/fabAllOptions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -18,55 +18,125 @@
         android:id="@+id/famButtons"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@id/fab"
+        android:layout_above="@id/fabAllOptions"
         android:layout_alignParentRight="true"
         app:fab_addButtonSize="mini"
         app:fab_expandDirection="left">
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
 
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/famShapes"
-        android:layout_width="wrap_content"
+        android:layout_width="600dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/famButtons"
         android:layout_alignParentRight="true"
         app:fab_addButtonSize="mini"
         app:fab_expandDirection="left">
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/famTexts"
-        android:layout_width="wrap_content"
+        android:layout_width="600dp"
         android:layout_height="wrap_content"
         android:layout_above="@id/famShapes"
         android:layout_alignParentRight="true"
         app:fab_addButtonSize="mini"
         app:fab_expandDirection="left">
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
 
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/famImages"
-        android:layout_width="wrap_content"
+        android:layout_width="600dp"
+        app:fab_labelsPosition="left"
+        app:fab_labelStyle=""
         android:layout_height="wrap_content"
         android:layout_above="@id/famTexts"
         android:layout_alignParentRight="true"
         app:fab_addButtonSize="mini"
         app:fab_expandDirection="left">
 
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
+        <com.getbase.floatingactionbutton.FloatingActionButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:fabSize="mini"/>
+
     </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
-    <com.getbase.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/famTitleBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/famImages"
-        android:layout_alignParentRight="true"
-        app:fab_addButtonSize="mini"
-        app:fab_expandDirection="left">
-
-    </com.getbase.floatingactionbutton.FloatingActionsMenu>
-
 </RelativeLayout>

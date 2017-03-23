@@ -22,7 +22,7 @@ public class CustomFABDemoActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_custom_fab);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab = (FloatingActionButton) findViewById(R.id.fabAllOptions);
         fab1 = (FloatingActionButton) findViewById(R.id.fab1);
         fab2 = (FloatingActionButton) findViewById(R.id.fab2);
         fab_open = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.fab_open);
@@ -38,7 +38,7 @@ public class CustomFABDemoActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
         int id = v.getId();
         switch (id) {
-            case R.id.fab:
+            case R.id.fabAllOptions:
                 animateFAB();
                 break;
             case R.id.fab1:
