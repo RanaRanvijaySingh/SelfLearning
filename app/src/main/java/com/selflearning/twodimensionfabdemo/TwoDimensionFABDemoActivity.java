@@ -27,7 +27,6 @@ public class TwoDimensionFABDemoActivity extends AppCompatActivity implements Vi
         floatingActionButtonIds.add(R.id.famImages);
         floatingActionButtonIds.add(R.id.famShapes);
         floatingActionButtonIds.add(R.id.famTexts);
-        floatingActionButtonIds.add(R.id.famTitleBar);
     }
 
     @Override
