@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.selflearning.advancefabdemo.AdvanceFABDemoActivity;
+import com.selflearning.boayzswipelibdemo.BoayzSwipeLibDemoActivity;
 import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
 import com.selflearning.customfabdemo.CustomFABDemoActivity;
 import com.selflearning.customnotification.CustomNotificationDemoActivity;
@@ -20,9 +21,8 @@ import com.selflearning.observerpattern.ObserverPatternDemoActivity;
 import com.selflearning.pulltorefresh.PullToRefreshDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
-import com.selflearning.sharedprefdemo.SharedPrefDemoActivity;
+import com.selflearning.scaleanimation.ScaleAnimationDemoActivity;
 import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
-import com.selflearning.tddwithmvpmvvmdemo.TddDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 import com.selflearning.twodimensionfabdemo.TwoDimensionFABDemoActivity;
 
@@ -41,8 +41,6 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(CustomNotificationDemoActivity.class);
         activityList.add(RotateImageDemoActivity.class);
         activityList.add(FileDemoActivity.class);
-        activityList.add(TddDemoActivity.class);
-        activityList.add(SharedPrefDemoActivity.class);
         activityList.add(DatabaseUpgradeDemoActivity.class);
         activityList.add(RotateViewDemoActivity.class);
         activityList.add(RxAndroidDemoActivity.class);
@@ -53,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(CustomFABDemoActivity.class);
         activityList.add(AdvanceFABDemoActivity.class);
         activityList.add(TwoDimensionFABDemoActivity.class);
+        activityList.add(ScaleAnimationDemoActivity.class);
+        activityList.add(BoayzSwipeLibDemoActivity.class);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         final LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvDemos.setLayoutManager(layoutManager);
-        final DemoAdapter demoAdapter = new DemoAdapter(getDemoList(), demoClickListener);
+        final DemoAdapter demoAdapter = new DemoAdapter(getDemoList(), mDemoClickListener);
         rvDemos.setAdapter(demoAdapter);
     }
 
@@ -89,8 +89,6 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_custom_notification));
         demoList.add(getResources().getString(R.string.demo_rotate_image));
         demoList.add(getResources().getString(R.string.demo_file));
-        demoList.add(getResources().getString(R.string.demo_tdd_mvp_mvvp));
-        demoList.add(getResources().getString(R.string.demo_shared_pref_screen));
         demoList.add(getResources().getString(R.string.demo_database_upgrade));
         demoList.add(getResources().getString(R.string.demo_custom_rotate_view));
         demoList.add(getResources().getString(R.string.demo_rx_android));
@@ -101,10 +99,12 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_custom_fab));
         demoList.add(getResources().getString(R.string.demo_advance_fab));
         demoList.add(getResources().getString(R.string.demo_2d_fab));
+        demoList.add(getResources().getString(R.string.demo_scale_animation));
+        demoList.add(getResources().getString(R.string.demo_boayz_swipe_lib));
         return demoList;
     }
 
-    private final DemoClickListener demoClickListener = new DemoClickListener() {
+    private final DemoClickListener mDemoClickListener = new DemoClickListener() {
         @Override
         public void selectedPosition(int adapterPosition) {
             startActivity(activityList.get(adapterPosition));

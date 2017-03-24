@@ -26,8 +26,6 @@
         <activity android:name=".customnotification.CustomNotificationDemoActivity"/>
         <activity android:name=".circularseekbardemo.RotateImageDemoActivity"/>
         <activity android:name=".filedemo.FileDemoActivity"/>
-        <activity android:name=".tddwithmvpmvvmdemo.TddDemoActivity"/>
-        <activity android:name=".sharedprefdemo.SharedPrefDemoActivity"/>
         <activity android:name=".databaseupgradedemo.DatabaseUpgradeDemoActivity"/>
         <activity android:name=".rotateviewdemo.RotateViewDemoActivity"/>
         <activity android:name=".rxandroiddemo.RxAndroidDemoActivity"/>
@@ -38,6 +36,12 @@
         <activity android:name=".customfabdemo.CustomFABDemoActivity"/>
         <activity android:name=".advancefabdemo.AdvanceFABDemoActivity"/>
         <activity android:name=".twodimensionfabdemo.TwoDimensionFABDemoActivity"/>
+        <activity android:name=".scaleanimation.ScaleAnimationDemoActivity"/>
+        <activity android:name=".boayzswipelibdemo.BoayzSwipeLibDemoActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
 
         <receiver android:name=".customnotification.ButtonClickReceiver">
             <intent-filter>
