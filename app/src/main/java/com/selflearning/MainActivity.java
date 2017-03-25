@@ -22,6 +22,7 @@ import com.selflearning.pulltorefresh.PullToRefreshDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.scaleanimation.ScaleAnimationDemoActivity;
+import com.selflearning.swiftperfectdemo.SwiftPerfectDemoActivity;
 import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 import com.selflearning.twodimensionfabdemo.TwoDimensionFABDemoActivity;
@@ -53,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(TwoDimensionFABDemoActivity.class);
         activityList.add(ScaleAnimationDemoActivity.class);
         activityList.add(BoayzSwipeLibDemoActivity.class);
+        activityList.add(SwiftPerfectDemoActivity.class);
     }
 
     @Override
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_2d_fab));
         demoList.add(getResources().getString(R.string.demo_scale_animation));
         demoList.add(getResources().getString(R.string.demo_boayz_swipe_lib));
+        demoList.add(getResources().getString(R.string.demo_swift_perfect));
         return demoList;
     }
 

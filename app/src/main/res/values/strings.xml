@@ -29,6 +29,7 @@
     <string name="demo_2d_fab">2-D FAB demo</string>
     <string name="demo_scale_animation">Scale animation demo</string>
     <string name="demo_boayz_swipe_lib">Boayz Swipe library demo</string>
+    <string name="demo_swift_perfect">Swift perfect demo</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>
