@@ -1,5 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-
+apply plugin: 'findbugs'
 buildscript {
     repositories {
         jcenter()
@@ -21,3 +21,25 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+task customFindbugs(type: FindBugs) {
+    ignoreFailures = true
+    effort = "max"
+    reportLevel = "medium"
+    classes = files("app/build/intermediates/classes/develop/debug/")
+
+    // Use this only if you want exclude some errors
+    // excludeFilter = file("$rootProject.rootDir/config/findbugs/exclude.xml")
+
+    source = files('app/src/main/java/')
+    classpath = files()
+
+    reports {
+        xml.enabled = false
+        //xml.withMessages = true
+        html.enabled = !xml.isEnabled()
+        //xml.destination "$project.buildDir/outputs/findbugs/findbugs-output.xml"
+        html.destination "$project.buildDir/outputs/findbugs/findbugs-output.html"
+    }
+}
+
