@@ -6,17 +6,17 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
-    public static Retrofit retrofit = null;
+    private static final String BASE_URL = "http://192.168.1.101:8282";
+    public static Retrofit sRetrofit = null;
 
     public static final Retrofit getClient() {
-        if (retrofit == null) {
-            retrofit = new Retrofit.Builder()
+        if (sRetrofit == null) {
+            sRetrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit;
+        return sRetrofit;
     }
 }

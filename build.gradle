@@ -43,3 +43,16 @@ task customFindbugs(type: FindBugs) {
     }
 }
 
+ext {
+    buildToolsVersion = "25.0.0"
+    compileSdkVersion = 25
+    supportVersion = "25.2.0"
+    junitVersion = "4.12"
+    expandableRecyclerVersion = "1.0.3"
+    mockitoVersion = "2.0.2-beta"
+    rxAndroidVersion = "0.25.0"
+    butterKnifeVersion = "8.4.0"
+    gsonVersion = "2.6.2"
+    swipeLibraryVersion = "1.2.0@aar"
+    floatingActionButtonVersion = "1.10.1"
+}

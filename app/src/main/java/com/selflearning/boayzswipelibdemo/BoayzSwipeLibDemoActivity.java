@@ -85,6 +85,40 @@ public class BoayzSwipeLibDemoActivity extends AppCompatActivity {
         };
         // set creator
         mSwipeMenuListView.setMenuCreator(creator);
+        mSwipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
+        SwipeMenuCreator creator1 = new SwipeMenuCreator() {
+
+            @Override
+            public void create(SwipeMenu menu) {
+                // create "open" item
+                SwipeMenuItem openItem = new SwipeMenuItem(getApplicationContext());
+                // set item background
+                openItem.setBackground(new ColorDrawable(Color.rgb(0xC9, 0xC9, 0xCE)));
+                // set item width
+                openItem.setWidth(dp2px(90));
+                // set item title
+                openItem.setTitle(buttonText);
+                // set item title fontsize
+                openItem.setTitleSize(18);
+                // set item title font color
+                openItem.setTitleColor(Color.WHITE);
+                // add to menu
+                menu.addMenuItem(openItem);
+                // create "delete" item
+                SwipeMenuItem deleteItem = new SwipeMenuItem(getApplicationContext());
+                // set item background
+                deleteItem.setBackground(new ColorDrawable(Color.rgb(0xF9, 0x3F, 0x25)));
+                // set item width
+                deleteItem.setWidth(dp2px(90));
+                // set a icon
+                deleteItem.setIcon(R.drawable.ic_android_black_24dp);
+                // add to menu
+                menu.addMenuItem(deleteItem);
+            }
+        };
+        // set creator
+        mSwipeMenuListView.setMenuCreator(creator1);
+        mSwipeMenuListView.setSwipeDirection(SwipeMenuListView.DIRECTION_RIGHT);
     }
 
     private final SwipeMenuListView.OnMenuItemClickListener mItemClickListener =

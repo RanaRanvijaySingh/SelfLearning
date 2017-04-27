@@ -110,6 +110,7 @@
     <com.getbase.floatingactionbutton.FloatingActionsMenu
         android:id="@+id/famImages"
         android:layout_width="600dp"
+        app:fab_labelsPosition="left"
         android:layout_height="wrap_content"
         android:layout_above="@id/famTexts"
         android:layout_alignParentRight="true"

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.google.gson.Gson;
 import com.selflearning.advancefabdemo.AdvanceFABDemoActivity;
 import com.selflearning.boayzswipelibdemo.BoayzSwipeLibDemoActivity;
 import com.selflearning.circularseekbardemo.RotateImageDemoActivity;
@@ -22,6 +23,8 @@ import com.selflearning.pulltorefresh.PullToRefreshDemoActivity;
 import com.selflearning.rotateviewdemo.RotateViewDemoActivity;
 import com.selflearning.rxandroiddemo.RxAndroidDemoActivity;
 import com.selflearning.scaleanimation.ScaleAnimationDemoActivity;
+import com.selflearning.swiftperfectdemo.DummyResponseModel;
+import com.selflearning.swiftperfectdemo.SwiftPerfectDemoActivity;
 import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 import com.selflearning.twodimensionfabdemo.TwoDimensionFABDemoActivity;
@@ -53,7 +56,12 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(TwoDimensionFABDemoActivity.class);
         activityList.add(ScaleAnimationDemoActivity.class);
         activityList.add(BoayzSwipeLibDemoActivity.class);
+        activityList.add(SwiftPerfectDemoActivity.class);
     }
+
+    private String str = "{\"ID\":null,\"name\":\"Doe\",\"first-name\":\"John\",\"age\":25," +
+            "\"hobbies\":[\"reading\",\"cinema\",{\"sports\":" +
+            "[\"volley-ball\",\"badminton\"]}],\"address\":{}}";
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -101,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_2d_fab));
         demoList.add(getResources().getString(R.string.demo_scale_animation));
         demoList.add(getResources().getString(R.string.demo_boayz_swipe_lib));
+        demoList.add(getResources().getString(R.string.demo_swift_perfect));
         return demoList;
     }
 
