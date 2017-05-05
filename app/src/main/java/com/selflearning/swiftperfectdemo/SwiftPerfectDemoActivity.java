@@ -21,14 +21,12 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.R.attr.data;
-
 public class SwiftPerfectDemoActivity extends AppCompatActivity {
 
     private static final String TAG = SwiftPerfectDemoActivity.class.getName();
-    @BindView(R.id.buttonApiCall)
+    @BindView(R.id.buttonMakeGetRequest)
     Button mButtonApiCall;
-    @BindView(R.id.textViewApiResponse)
+    @BindView(R.id.textViewUrl)
     TextView mTextViewApiResponse;
 
     @Override
@@ -38,7 +36,7 @@ public class SwiftPerfectDemoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick(R.id.buttonApiCall)
+    @OnClick(R.id.buttonMakeGetRequest)
     public void onClickApiCallButton1(View view) {
         ApiInterface apiInterface = ApiClient.getClient().create(ApiInterface.class);
         Call<DummyResponseModel> responseModelCall = apiInterface.makeFirstSwiftApiCall();

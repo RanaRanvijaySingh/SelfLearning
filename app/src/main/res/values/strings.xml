@@ -30,6 +30,13 @@
     <string name="demo_scale_animation">Scale animation demo</string>
     <string name="demo_boayz_swipe_lib">Boayz Swipe library demo</string>
     <string name="demo_swift_perfect">Swift perfect demo</string>
+    <string name="textview_request">Request:</string>
+    <string name="textview_response">Response:</string>
+    <string name="textview_url">URL:</string>
+    <string name="textview_make_get_request">Make get request</string>
+    <string name="textview_make_post_request">Make post request</string>
+    <string name="textview_upload_file">Upload File</string>
+    <string name="textview_download_file">Download File</string>
     <array name="string_list">
         <item>Item 1</item>
         <item>Item 2</item>
