@@ -38,7 +38,8 @@
         <activity android:name=".twodimensionfabdemo.TwoDimensionFABDemoActivity"/>
         <activity android:name=".scaleanimation.ScaleAnimationDemoActivity"/>
         <activity android:name=".boayzswipelibdemo.BoayzSwipeLibDemoActivity"/>
-        <activity android:name=".swiftperfectdemo.SwiftPerfectDemoActivity">
+        <activity android:name=".swiftperfectdemo.SwiftPerfectDemoActivity"/>
+        <activity android:name=".youtubedemo.YouTubeDemoActivity">
             <intent-filter>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>

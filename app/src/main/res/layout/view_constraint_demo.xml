@@ -45,7 +45,7 @@
         android:orientation="vertical"
         app:layout_constraintGuide_end="17dp"
         tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="367dp"/>
+        tools:layout_editor_absoluteX="343dp"/>
 
     <android.support.constraint.Guideline
         android:layout_width="wrap_content"
@@ -76,7 +76,7 @@
         app:layout_constraintRight_toLeftOf="@+id/button2"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
-        android:layout_marginBottom="0dp"/>
+        />
 
     <Button
         android:id="@+id/button2"
@@ -96,7 +96,7 @@
         app:layout_constraintLeft_toRightOf="@+id/button2"
         app:layout_constraintRight_toLeftOf="@+id/guideline2"
         app:layout_constraintBottom_toBottomOf="@+id/button2"
-        android:layout_marginBottom="0dp"/>
+        />
 
     <Button
         android:id="@+id/button4"
@@ -106,8 +106,9 @@
         app:layout_constraintRight_toLeftOf="@+id/button5"
         app:layout_constraintLeft_toLeftOf="@+id/guideline"
         android:layout_marginLeft="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button5"
-        android:layout_marginBottom="-48dp"/>
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintTop_toTopOf="@+id/button5"
+        android:layout_marginTop="0dp"/>
 
     <Button
         android:id="@+id/button5"
@@ -116,7 +117,7 @@
         android:text="Button"
         app:layout_constraintRight_toLeftOf="@+id/button6"
         app:layout_constraintLeft_toRightOf="@+id/button4"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="100dp"
         app:layout_constraintTop_toBottomOf="@+id/button2"/>
 
     <Button
@@ -127,21 +128,7 @@
         app:layout_constraintLeft_toRightOf="@+id/button5"
         app:layout_constraintRight_toLeftOf="@+id/guideline2"
         android:layout_marginRight="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button5"
-        android:layout_marginBottom="0dp"/>
+        app:layout_constraintTop_toTopOf="@+id/button5"
+        android:layout_marginTop="0dp"/>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintLeft_toLeftOf="@+id/guideline"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@+id/button5"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline3"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintVertical_bias="0.5"
-        app:layout_constraintRight_toLeftOf="@+id/guideline2"
-        android:layout_marginRight="8dp"/>
 </android.support.constraint.ConstraintLayout>

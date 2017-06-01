@@ -28,6 +28,7 @@ import com.selflearning.swiftperfectdemo.SwiftPerfectDemoActivity;
 import com.selflearning.swipelayoutdemo.SwipeDemoActivity;
 import com.selflearning.toolbardemo.ToolbarDemoActivity;
 import com.selflearning.twodimensionfabdemo.TwoDimensionFABDemoActivity;
+import com.selflearning.youtubedemo.YouTubeDemoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         activityList.add(ScaleAnimationDemoActivity.class);
         activityList.add(BoayzSwipeLibDemoActivity.class);
         activityList.add(SwiftPerfectDemoActivity.class);
+        activityList.add(YouTubeDemoActivity.class);
     }
 
     private String str = "{\"ID\":null,\"name\":\"Doe\",\"first-name\":\"John\",\"age\":25," +
@@ -110,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
         demoList.add(getResources().getString(R.string.demo_scale_animation));
         demoList.add(getResources().getString(R.string.demo_boayz_swipe_lib));
         demoList.add(getResources().getString(R.string.demo_swift_perfect));
+        demoList.add(getResources().getString(R.string.demo_you_tube));
         return demoList;
     }
 
