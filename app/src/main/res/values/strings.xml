@@ -51,4 +51,5 @@
     <item name="loader_ids" type="id"/>
     <string name="youtube_api_key">AIzaSyBos9YkTSxHISf9DlCr9Px6R268YO9B9tU</string>
     <string name="demo_you_tube">YouTube demo</string>
+    <string name="validate">Validate</string>
 </resources>
